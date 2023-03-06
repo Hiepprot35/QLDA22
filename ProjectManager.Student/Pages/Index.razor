@@ -1,0 +1,141 @@
+﻿@page "/"
+@inherits IndexBase
+
+@if (@isLoading)
+{
+    <TemplatedLoading />
+}
+<div class="box-form">
+    <div class="search-form">
+        @if (isShow)
+        {
+            <h3 class="box-title margin-bottom-20" style="text-align: center; font-weight: 600; padding-bottom: 15px;">Bạn đã thực hiện thao tác trước đó</h3>
+        }
+        else
+        {
+            <h3 class="box-title margin-bottom-20" style="text-align: center; font-weight: 600; border-bottom: 1px solid #ccc; padding-bottom: 15px;">Upload đồ án</h3>
+            <RadzenTemplateForm TItem="StudentViewModel" Data="@editModel" Submit="@OnSubmit">
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Mã sinh viên" />
+                            <RadzenTextBox Placeholder="Mã sinh viên..." @bind-Value="@editModel.Username" Disabled="true" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Tên sinh viên" />
+                            <RadzenTextBox Placeholder="Tên sinh viên..." @bind-Value="@editModel.Name" Disabled="true" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Khoa" />
+                            <RadzenTextBox Placeholder="Khoa..." @bind-Value="@editModel.DepartmentName" Disabled="true" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Chuyên ngành" />
+                            <RadzenTextBox Placeholder="Chuyên ngành..." @bind-Value="@editModel.SpecializedName" Disabled="true" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Lớp" />
+                            <RadzenTextBox Placeholder="Lớp..." @bind-Value="@editModel.ClasssName" Disabled="true" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Niên khóa" />
+                            <RadzenTextBox Placeholder="Niên khóa..." @bind-Value="@editModel.SchoolYearName" Disabled="true" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Hệ đào tạo" />
+                            <RadzenTextBox Placeholder="Hệ đào tạo..." @bind-Value="@editModel.TrainingSystemName" Disabled="true" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Giáo viên hướng dẫn" />
+                            <RadzenDropDown class="radzen-dropdown"
+                                            AllowClear="true"
+                                            TValue="long?"
+                                            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                                            FilterOperator="StringFilterOperator.Contains"
+                                            AllowFiltering="true"
+                                            Data="@listTeacher"
+                                            TextProperty="Name"
+                                            ValueProperty="Id"
+                                            Placeholder="--Tất cả--"
+                                            @bind-Value="@teacherId" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Tên đồ án" />
+                            <RadzenTextBox Placeholder="Tên đồ án..." @bind-Value="@projectName" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <RadzenLabel class="form-label" Text="Link đồ án" />
+                            <RadzenTextBox Placeholder="Link đồ án..." @bind-Value="@linkDownload" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row-search-form">
+                            <RadzenButton type="submit" class="btn btn-primary">
+                                <RadzenIcon Icon="save" class="material-icons-custom" />Submit
+                            </RadzenButton>
+                        </div>
+                    </div>
+                </div>
+            </RadzenTemplateForm>
+
+        }
+    </div>
+</div>

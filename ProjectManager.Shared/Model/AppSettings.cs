@@ -25,6 +25,13 @@
         public string ProjectList_Mark { get; set; }
         public string ProjectList_GetAllProjectList { get; set; }
 
+        //ProjectList (Danh sáchthực tập)
+        public string Intern_GetAll { get; set; }
+        public string Intern_Save { get; set; }
+        public string Intern_Delete { get; set; }
+        public string Intern_Mark { get; set; }
+        public string Intern_GetAllIntern { get; set; }
+
         //SchoolYear (Quản lý niên khóa)
         public string SchoolYear_GetAll { get; set; }
         public string SchoolYear_Save { get; set; }

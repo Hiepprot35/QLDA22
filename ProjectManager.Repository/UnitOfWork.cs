@@ -43,6 +43,8 @@ namespace ProjectManager.Repository
         IClasssRepository ClasssRepository { get; }
         IDepartmentRepository DepartmentRepository { get; }
         IProjectListRepository ProjectListRepository { get; }
+        IInternRepository InternRepository { get; }
+
         ISchoolYearRepository SchoolYearRepository { get; }
         ISpecializedRepository SpecializedRepository { get; }
         IStudentRepository StudentRepository { get; }
@@ -258,6 +260,15 @@ namespace ProjectManager.Repository
             get
             {
                 return _userManagementRepository ??= new UserManagementRepository(this);
+            }
+        }
+
+        public IInternRepository _internRepository;
+        public IInternRepository InternRepository
+        {
+            get
+            {
+                return _internRepository ??= new InternRepository(this);
             }
         }
     }

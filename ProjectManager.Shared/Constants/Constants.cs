@@ -69,6 +69,8 @@
             public const string SchoolYear = "SchoolYear";
             public const string Specialized = "Specialized";
             public const string Student = "Student";
+            public const string Intern = "Intern";
+
             public const string Teacher = "Teacher";
             public const string TrainingSystem = "TrainingSystem";
         }

@@ -10,6 +10,8 @@ namespace ProjectManager.Connection
 
         public virtual DbSet<Classs> Classs { get; set; }
         public virtual DbSet<Department> Department { get; set; }
+        public virtual DbSet<Intern> Intern { get; set; }
+
         public virtual DbSet<ProjectList> ProjectList { get; set; }
         public virtual DbSet<SchoolYear> SchoolYear { get; set; }
         public virtual DbSet<Specialized> Specialized { get; set; }

@@ -22,6 +22,8 @@ namespace ProjectManager.Admin.Shared.Template
         [Parameter] public RadzenDataGrid<SchoolYearViewModel> gridSchoolYear { get; set; }
         [Parameter] public RadzenDataGrid<TeacherViewModel> gridTeacher { get; set; }
         [Parameter] public RadzenDataGrid<StudentViewModel> gridStudent { get; set; }
+        [Parameter] public RadzenDataGrid<InternViewModel> gridIntern { get; set; }
+
         [Parameter] public RadzenDataGrid<ProjectListViewModel> gridProjectList { get; set; }
 
         protected override void OnInitialized()
@@ -68,6 +70,9 @@ namespace ProjectManager.Admin.Shared.Template
                 case Constants.FromDelete.ProjectList:
                     result = await _projectListService.DeleteAsync(deleteRequest, token);
                     break;
+                case Constants.FromDelete.Intern:
+                    result = await _internService.DeleteAsync(deleteRequest, token);
+                    break;
                 default:
                     break;
             }
@@ -102,6 +107,9 @@ namespace ProjectManager.Admin.Shared.Template
                         break;
                     case Constants.FromDelete.ProjectList:
                         await gridProjectList.Reload();
+                        break;
+                    case Constants.FromDelete.Intern:
+                        await gridIntern.Reload();
                         break;
                     default:
                         break;

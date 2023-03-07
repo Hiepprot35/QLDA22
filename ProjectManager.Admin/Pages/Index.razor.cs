@@ -11,6 +11,8 @@ namespace ProjectManager.Admin.Pages
         public int totalClass;
         public int totalDepartment;
         public int totalSpecialized;
+        public int totalInternt;
+
         public int totalTeacher;
         public int totalProjectList;
         public int totalSuccess;
@@ -42,6 +44,14 @@ namespace ProjectManager.Admin.Pages
             totalProjectList = projectList.TotalRecords;
             totalSuccess = projectList.Data.Where(x => Convert.ToDecimal(x.Point) >= Convert.ToDecimal("7")).Count();
             totalFail = projectList.Data.Where(x => Convert.ToDecimal(x.Point) < Convert.ToDecimal("7")).Count();
+
+            await Delay();
+            isLoading = false;
+
+            var intern = await _internService.GetAllInternAsync(token);
+            totalInternt = intern.TotalRecords;
+            totalSuccess = intern.Data.Where(x => Convert.ToDecimal(x.Point) >= Convert.ToDecimal("0")).Count();
+            totalFail = intern.Data.Where(x => Convert.ToDecimal(x.Point) < Convert.ToDecimal("0")).Count();
 
             await Delay();
             isLoading = false;

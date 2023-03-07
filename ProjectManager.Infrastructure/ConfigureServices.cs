@@ -74,6 +74,13 @@ namespace ProjectManager.Infrastructure
                 options.Classs_Delete = appSettingOptions[nameof(AppSettings.Classs_Delete)];
                 options.Classs_GetAllClasss = appSettingOptions[nameof(AppSettings.Classs_GetAllClasss)];
 
+                //Intern
+                options.Intern_GetAll = appSettingOptions[nameof(AppSettings.Intern_GetAll)];
+                options.Intern_Save = appSettingOptions[nameof(AppSettings.Intern_Save)];
+                options.Intern_Delete = appSettingOptions[nameof(AppSettings.Intern_Delete)];
+                options.Intern_Mark = appSettingOptions[nameof(AppSettings.Intern_Mark)];
+                options.Intern_GetAllIntern = appSettingOptions[nameof(AppSettings.Intern_GetAllIntern)];
+
                 //Department (Quản lý khoa)
                 options.Department_GetAll = appSettingOptions[nameof(AppSettings.Department_GetAll)];
                 options.Department_Save = appSettingOptions[nameof(AppSettings.Department_Save)];

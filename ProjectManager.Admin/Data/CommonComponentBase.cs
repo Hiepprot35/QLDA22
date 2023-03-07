@@ -18,6 +18,8 @@ namespace ProjectManager.Admin.Data
         [Inject] protected IStudentService _studentService { get; set; }
         [Inject] protected ITeacherService _teacherService { get; set; }
         [Inject] protected IProjectListService _projectListService { get; set; }
+        [Inject] protected IInternService _internService { get; set; }
+
         [Inject] protected IAuthenticationService _authenticationService { get; set; }
 
         public async Task Delay()
@@ -26,6 +28,7 @@ namespace ProjectManager.Admin.Data
         }
 
         public static long projectListStatus { get; set; }
+        public static long internStatus { get; set; }
 
         public static string token { get; set; }
         public static string userName { get; set; }

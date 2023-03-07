@@ -31,6 +31,15 @@ namespace ProjectManager.Repository
         {
         }
     }
+    public interface IInternRepository : IRepository<Intern>
+    {
+    }
+    public class InternRepository : Repository<Intern>, IInternRepository
+    {
+        public InternRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+    }
 
     public interface ISchoolYearRepository : IRepository<SchoolYear>
     {

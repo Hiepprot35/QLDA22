@@ -3,7 +3,7 @@ GO
 /****** Object:  Database [ProjectManager]    Script Date: 10/14/2021 11:21:32 PM ******/
 CREATE DATABASE [QLDA]
 GO
-USE [ProjectManager]
+USE [QLDA]
 GO
 /****** Object:  UserDefinedFunction [dbo].[ufnRemoveMark]    Script Date: 10/14/2021 11:21:32 PM ******/
 SET ANSI_NULLS ON

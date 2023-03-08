@@ -2,7 +2,7 @@
 
 namespace ProjectManager.Shared.Model.ViewModel
 {
-    public class InternViewModel : ProjectList
+    public class InternViewModel : Intern
     {
         public long STT { get; set; }
         public long TotalRow { get; set; }

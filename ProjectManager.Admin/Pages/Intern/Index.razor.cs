@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http;
@@ -90,5 +90,10 @@ namespace ProjectManager.Admin.Pages.Intern
             {
                 await grid.FirstPage();
             }
+        public async Task ShowModal(InternViewModel data)
+        {
+            await _dialogService.OpenAsync<InternModal>("Xem dữ liệu",
+            new Dictionary<string, object>() { { "internViewModel", data }, { "grid", grid } });
         }
+    }
     }

@@ -90,10 +90,23 @@ namespace ProjectManager.Admin.Pages.Intern
             {
                 await grid.FirstPage();
             }
-        public async Task ShowModal(InternViewModel data)
+        public async Task ShowModalEditIntern(InternViewModel data)
         {
-            await _dialogService.OpenAsync<InternModal>("Xem dữ liệu",
+            await _dialogService.OpenAsync<EditInternModal>("Xem dữ liệu",
             new Dictionary<string, object>() { { "internViewModel", data }, { "grid", grid } });
         }
+          public async Task ShowModalDelete(long id)
+        {
+            await _dialogService.OpenAsync<TemplateConfirm>(Constants.Notify,
+            new Dictionary<string, object>() { { "table", Constants.FromDelete.Intern }, { "id", id }, { "gridIntern", grid } });
+        }
+
+        public async Task ShowModal(InternViewModel data)
+        {
+            await _dialogService.OpenAsync<InternModal>("Danh sách thực tập",
+            new Dictionary<string, object>() { { "internViewModel", data } },
+            new DialogOptions() { Width = "700px" });
+        }
+       
     }
     }

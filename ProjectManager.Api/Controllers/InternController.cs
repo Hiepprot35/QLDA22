@@ -38,7 +38,7 @@ namespace ProjectManager.Api.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " ProjectListController GetAllAsync: " + ex.ToString());
+                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " InternController GetAllAsync: " + ex.ToString());
                 return StatusCode(Convert.ToInt32(HttpStatusCode.InternalServerError), Constants.Message.InternalServer);
             }
         }
@@ -56,7 +56,7 @@ namespace ProjectManager.Api.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " ProjectListController SaveAsync: " + ex.ToString());
+                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " InternController SaveAsync: " + ex.ToString());
                 return StatusCode(Convert.ToInt32(HttpStatusCode.InternalServerError), Constants.Message.InternalServer);
             }
         }
@@ -74,7 +74,7 @@ namespace ProjectManager.Api.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " ProjectListController DeleteAsync: " + ex.ToString());
+                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " InternController DeleteAsync: " + ex.ToString());
                 return StatusCode(Convert.ToInt32(HttpStatusCode.InternalServerError), Constants.Message.InternalServer);
             }
         }
@@ -92,7 +92,7 @@ namespace ProjectManager.Api.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " ProjectListController MarkAsync: " + ex.ToString());
+                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " InternController MarkAsync: " + ex.ToString());
                 return StatusCode(Convert.ToInt32(HttpStatusCode.InternalServerError), Constants.Message.InternalServer);
             }
         }
@@ -107,7 +107,7 @@ namespace ProjectManager.Api.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " ProjectListController GetAllProjectListAsync: " + ex.ToString());
+                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " InternController GetAllProjectListAsync: " + ex.ToString());
                 return StatusCode(Convert.ToInt32(HttpStatusCode.InternalServerError), Constants.Message.InternalServer);
             }
         }

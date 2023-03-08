@@ -230,12 +230,37 @@ namespace ProjectManager.Services.Api
             {
                 try
                 {
-                    request.CreatedBy = request.CreatedBy;
-                    request.CreatedDate = DateTime.Now;
+                    var result = false;
+                    if (request.Id > 0)
+                    {
+                        var update = await _unitOfWork.InternRepository.GetSingleAsync(x => x.Id == request.Id && !x.IsDeleted);
+                        if (update == null || update.Id <= 0)
+                        {
+                            return new PagedResult<bool>
+                            {
+                                ResponseCode = Convert.ToInt32(HttpStatusCode.NotFound),
+                                ResponseMessage = Constants.Message.RecordNotFoundMessage,
+                                Data = false
+                            };
+                        }
 
-                    _unitOfWork.InternRepository.Add(request);
-                    var result = _unitOfWork.InternRepository.Commit();
+                        update.Name = request.Name;
+                        update.TeacherId = request.TeacherId;
+                        update.Point = request.Point;
+                        update.StudentId = request.StudentId;
 
+
+                        _unitOfWork.InternRepository.Update(update);
+                        result = _unitOfWork.ClasssRepository.Commit();
+                    }
+                    else
+                    {
+                        request.CreatedBy = request.CreatedBy;
+                        request.CreatedDate = DateTime.Now;
+
+                        _unitOfWork.InternRepository.Add(request);
+                        result = _unitOfWork.ClasssRepository.Commit();
+                    }
                     _unitOfWork.CommitTransaction();
                     if (result)
                     {
@@ -255,7 +280,7 @@ namespace ProjectManager.Services.Api
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " InternService SaveAsync: " + ex.ToString());
+                    Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " ClasssService SaveAsync: " + ex.ToString());
                     _unitOfWork.RollbackTransaction();
                     throw;
                 }
@@ -263,3 +288,4 @@ namespace ProjectManager.Services.Api
         }
     }
 }
+        

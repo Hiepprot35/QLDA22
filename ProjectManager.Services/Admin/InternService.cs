@@ -18,7 +18,7 @@ namespace ProjectManager.Services.Admin
     {
         Task<InternResponse> GetAllInternAsync(string token);
         Task<InternResponse> GetAllAsync(InternRequest request, string token);
-        Task<SaveResponse> SaveAsync(Department request, string token);
+        Task<SaveResponse> SaveAsync(Intern request, string token);
         Task<SaveResponse> MarkAsync(Intern request, string token);
 
         Task<SaveResponse> DeleteAsync(DeleteRequest request, string token);
@@ -83,11 +83,13 @@ namespace ProjectManager.Services.Admin
             return response;
         }
 
-        public async Task<SaveResponse> SaveAsync(Department request, string token)
+        public async Task<SaveResponse> SaveAsync(Intern request, string token)
         {
         var client = new HttpClientHelper();
         var response = await client.PostAsync<SaveResponse>(request, _appSettings.BaseUri, _appSettings.Intern_Save, token);
         return response;
     }
+
+
     }
 }

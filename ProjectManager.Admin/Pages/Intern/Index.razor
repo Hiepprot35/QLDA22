@@ -105,7 +105,13 @@
         <Columns>
             <RadzenDataGridColumn Width="120px" TItem="InternViewModel" Title="Thao tác" Frozen="true" TextAlign="TextAlign.Center">
                 <Template Context="data">
-                    <RadzenButton class="btn btn-grid-edit" title="Chấm điểm" Click="@(args => ShowModal(data))">
+                    <RadzenButton class="btn btn-grid-edit" title="Xem dữ liệu" Click="@(args => ShowModal(data))">
+                        <RadzenIcon Icon="create" class="material-icons-custom" />
+                    </RadzenButton>
+                    <RadzenButton class="btn btn-grid-delete" title="Xóa dữ liệu" Click="@(args => ShowModalDelete(data.Id))">
+                        <RadzenIcon Icon="delete_forever" class="material-icons-custom" />
+                    </RadzenButton>
+                    <RadzenButton class="btn btn-grid-view-student" title="Sửa dữ liệu" Click="@(args => ShowModalEditIntern(data))">
                         <RadzenIcon Icon="visibility" class="material-icons-custom" />
                     </RadzenButton>
                 </Template>

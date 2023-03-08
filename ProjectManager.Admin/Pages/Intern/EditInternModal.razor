@@ -22,7 +22,7 @@
                                 FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
                                 FilterOperator="StringFilterOperator.Contains"
                                 AllowFiltering="true"
-                                Data="@listDepartment"
+                                Data="@listStudent"
                                 TextProperty="Name"
                                 ValueProperty="Id"
                                 Placeholder="--Tất cả--"
@@ -40,31 +40,32 @@
                                 FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
                                 FilterOperator="StringFilterOperator.Contains"
                                 AllowFiltering="true"
-                                Data="@listSpecialized"
+                                Data="@listTeacher"
                                 TextProperty="Name"
                                 ValueProperty="Id"
                                 Placeholder="--Tất cả--"
                                 @bind-Value="@editModel.TeacherId" />
             </div>
         </div>
-        <div class="col-sm-6">
+        
+    </div>
+    <div class="row">
+        <div class="col-sm-6 padding-right-0">
             <div class="form-group">
-                <RadzenLabel class="form-label" Text="Điểm" />
-                <RadzenDropDown class="radzen-dropdown"
-                                AllowClear="true"
-                                TValue="string"
-                                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                FilterOperator="StringFilterOperator.Contains"
-                                AllowFiltering="true"
-                                Data="@listSchoolYear"
-                                TextProperty="Name"
-                                ValueProperty="Id"
-                                Placeholder="--Tất cả--"
-                                @bind-Value="@editModel.Point" />
+                <RadzenLabel class="form-label" Text="Điểm" /><span class="required">*</span>
+                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.Point" />
+                <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
             </div>
         </div>
-    </div>
+        <div class="col-sm-6 padding-right-0">
+            <div class="form-group">
+                <RadzenLabel class="form-label" Text="Mô tả" /><span class="required">*</span>
+                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.LinkDownload" />
+                <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
+            </div>
+        </div>
 
+    </div>
     @if (isShow)
     {
         <div class="row">

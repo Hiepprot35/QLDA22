@@ -36,10 +36,10 @@ namespace ProjectManager.Admin.Pages.Intern
             public InternViewModel internViewModel { get; set; }
 
             [Parameter]
-            public IEnumerable<Entity.Department> listDepartment { get; set; }
+            public IEnumerable<Entity.Student> listStudent { get; set; }
 
             [Parameter]
-            public IEnumerable<Entity.SchoolYear> listSchoolYear { get; set; }
+            public IEnumerable<Entity.Teacher> listTeacher { get; set; }
 
             [Parameter]
             public IEnumerable<Entity.Specialized> listSpecialized { get; set; }
@@ -49,18 +49,35 @@ namespace ProjectManager.Admin.Pages.Intern
             public bool isShow;
             protected override async Task OnInitializedAsync()
             {
-                isLoading = true;
+
+            var teacher = await _teacherService.GetAllTeacherAsync(token);
+            listTeacher = teacher.Data;
+
+            var student = await _studentService.GetAllStudentAsync(token);
+            listStudent = student.Data;
+            isLoading = true;
                 if (internViewModel.Id > 0)
                 {
                     editModel.Id = internViewModel.Id;
+
                     editModel.Name = internViewModel.Name;
+
                     editModel.StudentId = internViewModel.StudentId;
+
                     editModel.TeacherId = internViewModel.TeacherId;
+
+                    editModel.LinkDownload = internViewModel.LinkDownload;
+
                     editModel.Point = internViewModel.Point;
+
                     editModel.CreatedBy = internViewModel.CreatedBy;
+
                     editModel.CreatedDate = internViewModel.CreatedDate;
+
                     editModel.ModifiedBy = internViewModel.ModifiedBy;
+
                     editModel.ModifiedDate = internViewModel.ModifiedDate;
+
                     isShow = true;
                 }
                 else

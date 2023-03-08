@@ -36,7 +36,7 @@ namespace ProjectManager.Services.Admin
         public async Task<SaveResponse> DeleteAsync(DeleteRequest request, string token)
         {
         var client = new HttpClientHelper();
-        var response = await client.PostAsync<SaveResponse>(request, _appSettings.BaseUri, _appSettings.ProjectList_Delete, token);
+        var response = await client.PostAsync<SaveResponse>(request, _appSettings.BaseUri, _appSettings.Intern_Delete, token);
         return response;
     }
 
@@ -44,7 +44,7 @@ namespace ProjectManager.Services.Admin
         {
         var client = new HttpClientHelper();
         var response = await client.GetAsync<InternResponse>(_appSettings.BaseUri,
-            string.Format(_appSettings.Intern_GetAll,  request.TeacherId, request.SchoolYearId, request.Page, request.PageSize, request.SearchText, request.Status),
+            string.Format(_appSettings.Intern_GetAll,  request.TeacherId, request.StudentId, request.Page, request.PageSize, request.SearchText, request.Status),
             token);
 
         return response;

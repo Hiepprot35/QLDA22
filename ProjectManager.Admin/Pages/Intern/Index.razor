@@ -48,11 +48,11 @@
                                         FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
                                         FilterOperator="StringFilterOperator.Contains"
                                         AllowFiltering="true"
-                                        Data="@listSchoolYear"
+                                        Data="@listStudent"
                                         TextProperty="Name"
                                         ValueProperty="Id"
                                         Placeholder="--Tất cả--"
-                                        @bind-Value="@request.SchoolYearId" />
+                                        @bind-Value="@request.StudentId" />
                     </div>
                 </div>
                 <div class="col-sm-3 padding-left-0">
@@ -79,6 +79,9 @@
                     <div class="row-search-form">
                         <RadzenButton type="submit" class="btn btn-success btn-search-form">
                             <RadzenIcon Icon="search" class="material-icons-custom" />Tìm kiếm
+                        </RadzenButton>
+                        <RadzenButton class="btn btn-success btn-add-form" Click="@(args => ShowModalEditIntern(new InternViewModel()))">
+                            <RadzenIcon Icon="add_circle_outline" class="material-icons-custom" />Thêm mới
                         </RadzenButton>
                     </div>
                 </div>
@@ -133,6 +136,11 @@
             <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Giảng viên hướng dẫn">
                 <Template Context="data">                    
                        @data.TeacherName
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Mô tả">
+                <Template Context="data">
+                    @data.LinkDownload
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Điểm">

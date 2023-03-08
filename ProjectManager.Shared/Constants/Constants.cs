@@ -12,6 +12,8 @@
         public static string DepartmentId = "@DepartmentId";
         public static string SpecializedId = "@SpecializedId";
         public static string SchoolYearId = "@SchoolYearId";
+        public static string StudentId = "@StudentId";
+
         public static string Status = "@Status";
         public static string ClasssId = "@ClasssId";
         public static string TeacherId = "@TeacherId";

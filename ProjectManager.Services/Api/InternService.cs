@@ -248,6 +248,7 @@ namespace ProjectManager.Services.Api
                         update.TeacherId = request.TeacherId;
                         update.Point = request.Point;
                         update.StudentId = request.StudentId;
+                        update.LinkDownload = request.LinkDownload;
 
 
                         _unitOfWork.InternRepository.Update(update);

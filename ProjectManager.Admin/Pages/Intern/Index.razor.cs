@@ -33,8 +33,9 @@ namespace ProjectManager.Admin.Pages.Intern
             public RadzenDataGrid<InternViewModel> grid;
             public IEnumerable<InternViewModel> data;
             public IEnumerable<Entity.Teacher> listTeacher { get; set; }
+        public IEnumerable<Entity.Student> listStudent { get; set; }
 
-            public IEnumerable<Entity.SchoolYear> listSchoolYear { get; set; }
+        public IEnumerable<Entity.SchoolYear> listSchoolYear { get; set; }
 
             public List<StatusViewModel> listStatus { get; set; }
 
@@ -49,8 +50,8 @@ namespace ProjectManager.Admin.Pages.Intern
                 request.Status = (long)StatusEnum.All;
                 var teacher = await _teacherService.GetAllTeacherAsync(token);
                 listTeacher = teacher.Data;
-                var schoolYear = await _schoolYearService.GetAllSchoolYearAsync(token);
-                listSchoolYear = schoolYear.Data;
+                var student = await _studentService.GetAllStudentAsync(token);
+                listStudent = student.Data;
                 listStatus = _internService.GetAllListStatusAsync();
             }
 
@@ -92,8 +93,8 @@ namespace ProjectManager.Admin.Pages.Intern
             }
         public async Task ShowModalEditIntern(InternViewModel data)
         {
-            await _dialogService.OpenAsync<EditInternModal>("Xem dữ liệu",
-            new Dictionary<string, object>() { { "internViewModel", data }, { "grid", grid } });
+            await _dialogService.OpenAsync<EditInternModal>(data.Id > 0 ? "Sửa dữ liệu" : "Tạo dữ liệu",
+            new Dictionary<string, object>() { { "internViewModel", data }, { "grid", grid }, { "listStudent", listStudent },{"listTeacher",listTeacher } });
         }
           public async Task ShowModalDelete(long id)
         {
@@ -103,7 +104,7 @@ namespace ProjectManager.Admin.Pages.Intern
 
         public async Task ShowModal(InternViewModel data)
         {
-            await _dialogService.OpenAsync<InternModal>("Danh sách thực tập",
+            await _dialogService.OpenAsync<InternModal>("Chi tiết thông tin thực tập",
             new Dictionary<string, object>() { { "internViewModel", data } },
             new DialogOptions() { Width = "700px" });
         }

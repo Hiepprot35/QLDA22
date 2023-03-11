@@ -23,32 +23,33 @@ using Radzen;
 using Radzen.Blazor;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ProjectManager.Admin.Pages.Intern
 {
-   
-        public class InternModalEditBase : CommonComponentBase
+
+    public class InternModalEditBase : CommonComponentBase
+    {
+        [Parameter]
+        public RadzenDataGrid<InternViewModel> grid { get; set; }
+
+        [Parameter]
+        public InternViewModel internViewModel { get; set; }
+
+        [Parameter]
+        public IEnumerable<Entity.Student> listStudent { get; set; }
+
+        [Parameter]
+        public IEnumerable<Entity.Teacher> listTeacher { get; set; }
+
+        [Parameter]
+        public IEnumerable<Entity.Specialized> listSpecialized { get; set; }
+
+        public Entity.Intern editModel { get; set; } = new Entity.Intern();
+        public bool isLoading;
+        public bool isShow;
+        protected override async Task OnInitializedAsync()
         {
-            [Parameter]
-            public RadzenDataGrid<InternViewModel> grid { get; set; }
-
-            [Parameter]
-            public InternViewModel internViewModel { get; set; }
-
-            [Parameter]
-            public IEnumerable<Entity.Student> listStudent { get; set; }
-
-            [Parameter]
-            public IEnumerable<Entity.Teacher> listTeacher { get; set; }
-
-            [Parameter]
-            public IEnumerable<Entity.Specialized> listSpecialized { get; set; }
-
-            public Entity.Intern editModel { get; set; } = new Entity.Intern();
-            public bool isLoading;
-            public bool isShow;
-            protected override async Task OnInitializedAsync()
-            {
 
             var teacher = await _teacherService.GetAllTeacherAsync(token);
             listTeacher = teacher.Data;
@@ -56,59 +57,66 @@ namespace ProjectManager.Admin.Pages.Intern
             var student = await _studentService.GetAllStudentAsync(token);
             listStudent = student.Data;
             isLoading = true;
-                if (internViewModel.Id > 0)
-                {
-                    editModel.Id = internViewModel.Id;
+            if (internViewModel.Id > 0)
+            {
+                editModel.Id = internViewModel.Id;
 
-                    editModel.Name = internViewModel.Name;
+                editModel.Name = internViewModel.Name;
 
-                    editModel.StudentId = internViewModel.StudentId;
+                editModel.StudentId = internViewModel.StudentId;
 
-                    editModel.TeacherId = internViewModel.TeacherId;
+                editModel.TeacherId = internViewModel.TeacherId;
 
-                    editModel.LinkDownload = internViewModel.LinkDownload;
+                editModel.LinkDownload = internViewModel.LinkDownload;
 
-                    editModel.Point = internViewModel.Point;
+                editModel.Point = internViewModel.Point;
 
-                    editModel.CreatedBy = internViewModel.CreatedBy;
+                editModel.CreatedBy = internViewModel.CreatedBy;
 
-                    editModel.CreatedDate = internViewModel.CreatedDate;
+                editModel.CreatedDate = internViewModel.CreatedDate;
 
-                    editModel.ModifiedBy = internViewModel.ModifiedBy;
+                editModel.ModifiedBy = internViewModel.ModifiedBy;
 
-                    editModel.ModifiedDate = internViewModel.ModifiedDate;
+                editModel.ModifiedDate = internViewModel.ModifiedDate;
 
-                    isShow = true;
-                }
-                else
-                {
-                    isShow = false;
-                }
-
-                await Delay();
-                isLoading = false;
+                isShow = true;
+            }
+            else
+            {
+                isShow = false;
             }
 
-            public void Cancel()
-            {
-                _dialogService.Close(true);
-            }
+            await Delay();
+            isLoading = false;
+        }
 
-            public void OnInvalidSubmit(FormInvalidSubmitEventArgs args)
-            {
-            }
+        public void Cancel()
+        {
+            _dialogService.Close(true);
+        }
 
-            public async Task OnSubmit()
+        public void OnInvalidSubmit(FormInvalidSubmitEventArgs args)
+        {
+        }
+
+        public async Task OnSubmit()
+        {
+            var regex = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
+            var isValid = regex.IsMatch(editModel.Name);
+            var message = new NotificationMessage();
+            message.Duration = 4000;
+            editModel.CreatedBy = userName;
+            if (isValid)
             {
-                var message = new NotificationMessage();
-                message.Duration = 4000;
-                editModel.CreatedBy = userName;
                 if (editModel.Id > 0)
-                {
-                    editModel.ModifiedBy = userName;
-                }
-
+            {
+                editModel.ModifiedBy = userName;
+            }
+            
                 var result = await _internService.SaveAsync(editModel, token);
+
+
+                await grid.Reload();
                 if (result.ResponseCode == 200 && result.Data == true)
                 {
                     Cancel();
@@ -121,10 +129,21 @@ namespace ProjectManager.Admin.Pages.Intern
                     message.Severity = NotificationSeverity.Error;
                     message.Summary = Constants.Message.Fail;
                 }
-
                 message.Detail = result.ResponseMessage;
-                message.Duration = 4000;
-                _notificationService.Notify(message);
             }
+            else
+            {
+                Cancel();
+
+                message.Severity = NotificationSeverity.Error;
+                message.Detail = Constants.Message.Validation;
+                message.Summary = Constants.Message.Fail;
+                await grid.Reload(); 
+
+            }
+            _notificationService.Notify(message);
+
         }
+
+    }
     }

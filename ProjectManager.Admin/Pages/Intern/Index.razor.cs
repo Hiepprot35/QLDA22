@@ -43,6 +43,7 @@ namespace ProjectManager.Admin.Pages.Intern
             public int count;
             public int pageSize = 10;
             public int? page = 1;
+            
             protected override async Task OnInitializedAsync()
             {
                 Logout();

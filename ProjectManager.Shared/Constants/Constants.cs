@@ -35,6 +35,8 @@
             public static readonly string InternalServer = "Internal Server Error";
             public static readonly string ModelStateMessage = "Model State Invalid";
             public static readonly string IdNotFound = "Không tìm thấy Id";
+            public static readonly string Validation = "Dữ liệu có chứa kí tự không hợp lệ";
+
             public static readonly string RecordNotFoundMessage = "Không tìm thấy bản ghi";
             public static readonly string DeleteSuccess = "Xóa thông tin thành công";
             public static readonly string DeleteFail = "Đã xảy ra lỗi trong quá trình xóa dữ liệu. Vui lòng kiểm tra lại";

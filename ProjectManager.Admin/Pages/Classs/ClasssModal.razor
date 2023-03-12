@@ -8,6 +8,13 @@
     <div class="row">
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">
+                <RadzenLabel class="form-label" Text="Mã lớp" /><span class="required">*</span>
+                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.ID_Classs" />
+                <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
+            </div>
+        </div>
+        <div class="col-sm-6 padding-right-0">
+            <div class="form-group">
                 <RadzenLabel class="form-label" Text="Tên lớp" /><span class="required">*</span>
                 <RadzenTextBox Name="ClassName" @bind-Value="@editModel.Name" />
                 <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />

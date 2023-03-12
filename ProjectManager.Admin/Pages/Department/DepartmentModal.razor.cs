@@ -22,6 +22,7 @@ namespace ProjectManager.Admin.Pages.Department
 
             if (departmentViewModel.Id > 0)
             {
+                editModel.ID_Department=departmentViewModel.ID_Department; 
                 editModel.Id = departmentViewModel.Id;
                 editModel.Name = departmentViewModel.Name;
                 editModel.FoundingDate = departmentViewModel.FoundingDate;

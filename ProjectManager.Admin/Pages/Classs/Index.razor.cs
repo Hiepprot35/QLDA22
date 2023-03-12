@@ -51,6 +51,7 @@ namespace ProjectManager.Admin.Pages.Classs
             {
                 data = result.Data;
                 count = result.TotalRecords;
+                
             }
             else
             {

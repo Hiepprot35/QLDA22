@@ -17,6 +17,8 @@ namespace ProjectManager.Entity
         public string DeletedBy { get; set; }
         public DateTime? DeletedDate { get; set; }
         public bool IsDeleted { get; set; }
+        public string ID_TrainingSystem { get; set; }
+
     }
 }
 #pragma warning restore 1591

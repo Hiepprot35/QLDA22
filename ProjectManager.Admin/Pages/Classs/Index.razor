@@ -10,6 +10,7 @@
         <div class="search-form">
             <h3 class="box-title">Quản lý lớp</h3>
             <div class="row">
+                
                 <div class="col-sm-3">
                     <div class="form-group">
                         <RadzenLabel class="form-label" Text="Tên lớp" />
@@ -112,6 +113,8 @@
                 </FooterTemplate>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="50px" TItem="ClasssViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="id_classs" Title="Tên lớp" />
+
             <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="Name" Title="Tên lớp" />
             <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="DepartmentName" Title="Khoa" />
             <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="SpecializedName" Title="Chuyên ngành" />

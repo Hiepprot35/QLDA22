@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.Data.SqlClient;
 using ProjectManager.Admin.Data;
 using ProjectManager.Shared.Constants;
 using ProjectManager.Shared.Model.ViewModel;
 using Radzen;
 using Radzen.Blazor;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -26,6 +28,7 @@ namespace ProjectManager.Admin.Pages.Classs
 
             if (classsViewModel.Id > 0)
             {
+                editModel.ID_Classs = classsViewModel.ID_Classs;
                 editModel.Id = classsViewModel.Id;
                 editModel.Name = classsViewModel.Name;
                 editModel.DepartmentId = classsViewModel.DepartmentId;
@@ -65,24 +68,38 @@ namespace ProjectManager.Admin.Pages.Classs
             {
                 editModel.ModifiedBy = userName;
             }
+            try
+            {
+                var result = await _classsService.SaveAsync(editModel, token);
 
-            var result = await _classsService.SaveAsync(editModel, token);
+                if (result.ResponseCode == 200 && result.Data == true)
+                {
+                    Cancel();
+                    message.Severity = NotificationSeverity.Success;
+                    message.Summary = Constants.Message.Successfully;
 
-            if (result.ResponseCode == 200 && result.Data == true)
+                    await grid.Reload();
+                }
+                else
+                {
+                    Cancel();
+                    message.Severity = NotificationSeverity.Error;
+                    message.Summary = Constants.Message.Fail;
+                    
+                }
+                message.Detail = result.ResponseMessage;
+                message.Duration = 4000;
+            }
+            catch (Exception)
             {
                 Cancel();
-                message.Severity = NotificationSeverity.Success;
-                message.Summary = Constants.Message.Successfully;
-                await grid.Reload();
-            }
-            else
-            {
                 message.Severity = NotificationSeverity.Error;
                 message.Summary = Constants.Message.Fail;
+                message.Detail = "Mã lớp đã tồn tại";
+
             }
-            message.Detail = result.ResponseMessage;
-            message.Duration = 4000;
             _notificationService.Notify(message);
+
         }
 
     }

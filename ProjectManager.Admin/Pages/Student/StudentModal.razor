@@ -51,40 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 padding-right-0">
-            <div class="form-group">
-                <RadzenLabel class="form-label" Text="Khoa" />
-                <RadzenDropDown class="radzen-dropdown"
-                                AllowClear="true"
-                                TValue="long?"
-                                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                FilterOperator="StringFilterOperator.Contains"
-                                AllowFiltering="true"
-                                Data="@listDepartment"
-                                TextProperty="Name"
-                                ValueProperty="Id"
-                                Placeholder="--Tất cả--"
-                                @bind-Value="@editModel.DepartmentId" />
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <RadzenLabel class="form-label" Text="Chuyên ngành" />
-                <RadzenDropDown class="radzen-dropdown"
-                                AllowClear="true"
-                                TValue="long?"
-                                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                FilterOperator="StringFilterOperator.Contains"
-                                AllowFiltering="true"
-                                Data="@listSpecialized"
-                                TextProperty="Name"
-                                ValueProperty="Id"
-                                Placeholder="--Tất cả--"
-                                @bind-Value="@editModel.SpecializedId" />
-            </div>
-        </div>
-    </div>
+   
     <div class="row">
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">
@@ -102,22 +69,7 @@
                                 @bind-Value="@editModel.ClasssId" />
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <RadzenLabel class="form-label" Text="Hệ đào tạo" />
-                <RadzenDropDown class="radzen-dropdown"
-                                AllowClear="true"
-                                TValue="long?"
-                                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                FilterOperator="StringFilterOperator.Contains"
-                                AllowFiltering="true"
-                                Data="@listTrainingSystem"
-                                TextProperty="Name"
-                                ValueProperty="Id"
-                                Placeholder="--Tất cả--"
-                                @bind-Value="@editModel.TrainingSystemId" />
-            </div>
-        </div>
+       
     </div>
 
     @if (isShow)

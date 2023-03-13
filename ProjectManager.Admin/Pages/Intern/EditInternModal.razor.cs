@@ -59,6 +59,8 @@ namespace ProjectManager.Admin.Pages.Intern
             isLoading = true;
             if (internViewModel.Id > 0)
             {
+
+
                 editModel.Id = internViewModel.Id;
 
                 editModel.Name = internViewModel.Name;
@@ -78,6 +80,9 @@ namespace ProjectManager.Admin.Pages.Intern
                 editModel.ModifiedBy = internViewModel.ModifiedBy;
 
                 editModel.ModifiedDate = internViewModel.ModifiedDate;
+
+                editModel.ID_Intern = internViewModel.ID_Intern;
+
 
                 isShow = true;
             }
@@ -109,38 +114,56 @@ namespace ProjectManager.Admin.Pages.Intern
             if (isValid)
             {
                 if (editModel.Id > 0)
-            {
-                editModel.ModifiedBy = userName;
-            }
-            
-                var result = await _internService.SaveAsync(editModel, token);
+                {
+                    editModel.ModifiedBy = userName;
+                }
+                try
+                {
+                    var result = await _internService.SaveAsync(editModel, token);
 
 
-                await grid.Reload();
-                if (result.ResponseCode == 200 && result.Data == true)
+                    await grid.Reload();
+                    if (result.ResponseCode == 200 && result.Data == true)
+                    {
+                        Cancel();
+                        message.Severity = NotificationSeverity.Success;
+                        message.Summary = Constants.Message.Successfully;
+                        await grid.Reload();
+                    }
+                    else
+                    {
+                        message.Severity = NotificationSeverity.Error;
+                        message.Summary = Constants.Message.Fail;
+                    }
+
+                    message.Detail = result.ResponseMessage;
+                }
+                catch (Exception)
                 {
                     Cancel();
-                    message.Severity = NotificationSeverity.Success;
-                    message.Summary = Constants.Message.Successfully;
-                    await grid.Reload();
-                }
-                else
-                {
+
                     message.Severity = NotificationSeverity.Error;
                     message.Summary = Constants.Message.Fail;
+                    message.Detail = Constants.Message.Idexist;
+                    await grid.Reload();
+
+
                 }
-                message.Detail = result.ResponseMessage;
             }
             else
             {
                 Cancel();
-
                 message.Severity = NotificationSeverity.Error;
-                message.Detail = Constants.Message.Validation;
                 message.Summary = Constants.Message.Fail;
-                await grid.Reload(); 
+                message.Detail = Constants.Message.Validation;
+                                    await grid.Reload();
+
+
 
             }
+
+
+
             _notificationService.Notify(message);
 
         }

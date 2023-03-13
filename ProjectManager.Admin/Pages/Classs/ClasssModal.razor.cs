@@ -7,6 +7,7 @@ using Radzen;
 using Radzen.Blazor;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ProjectManager.Admin.Pages.Classs
@@ -60,44 +61,57 @@ namespace ProjectManager.Admin.Pages.Classs
 
         public async Task OnSubmit()
         {
+            var regex = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
+            var isValid = regex.IsMatch(editModel.Name);
             var message = new NotificationMessage();
             message.Duration = 4000;
 
             editModel.CreatedBy = userName;
-            if (editModel.Id > 0)
+            if (isValid)
             {
-                editModel.ModifiedBy = userName;
-            }
-            try
-            {
-                var result = await _classsService.SaveAsync(editModel, token);
-
-                if (result.ResponseCode == 200 && result.Data == true)
+                if (editModel.Id > 0)
                 {
-                    Cancel();
-                    message.Severity = NotificationSeverity.Success;
-                    message.Summary = Constants.Message.Successfully;
-
-                    await grid.Reload();
+                    editModel.ModifiedBy = userName;
                 }
-                else
+                try
+                {
+                    var result = await _classsService.SaveAsync(editModel, token);
+
+                    if (result.ResponseCode == 200 && result.Data == true)
+                    {
+                        Cancel();
+                        message.Severity = NotificationSeverity.Success;
+                        message.Summary = Constants.Message.Successfully;
+
+                        await grid.Reload();
+                    }
+                    else
+                    {
+                        Cancel();
+                        message.Severity = NotificationSeverity.Error;
+                        message.Summary = Constants.Message.Fail;
+
+                    }
+                    message.Detail = result.ResponseMessage;
+                    message.Duration = 4000;
+                }
+                catch (Exception)
                 {
                     Cancel();
                     message.Severity = NotificationSeverity.Error;
                     message.Summary = Constants.Message.Fail;
-                    
+                    message.Detail = "Mã lớp đã tồn tại";
+
                 }
-                message.Detail = result.ResponseMessage;
-                message.Duration = 4000;
             }
-            catch (Exception)
+            else
             {
                 Cancel();
                 message.Severity = NotificationSeverity.Error;
                 message.Summary = Constants.Message.Fail;
-                message.Detail = "Mã lớp đã tồn tại";
-
-            }
+                message.Detail = Constants.Message.Validation;
+                await grid.Reload();
+            }    
             _notificationService.Notify(message);
 
         }

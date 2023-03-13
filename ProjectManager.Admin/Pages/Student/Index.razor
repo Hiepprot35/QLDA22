@@ -16,38 +16,7 @@
                         <RadzenTextBox Placeholder="Mã sinh viên..." @bind-Value="@request.SearchText" />
                     </div>
                 </div>
-                <div class="col-sm-3 padding-left-0">
-                    <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Khoa" />
-                        <RadzenDropDown class="radzen-dropdown"
-                                        AllowClear="true"
-                                        TValue="long?"
-                                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                        FilterOperator="StringFilterOperator.Contains"
-                                        AllowFiltering="true"
-                                        Data="@listDepartment"
-                                        TextProperty="Name"
-                                        ValueProperty="Id"
-                                        Placeholder="--Tất cả--"
-                                        @bind-Value="@request.DepartmentId" />
-                    </div>
-                </div>
-                <div class="col-sm-3 padding-left-0">
-                    <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Chuyên ngành" />
-                        <RadzenDropDown class="radzen-dropdown"
-                                        AllowClear="true"
-                                        TValue="long?"
-                                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                        FilterOperator="StringFilterOperator.Contains"
-                                        AllowFiltering="true"
-                                        Data="@listSpecialized"
-                                        TextProperty="Name"
-                                        ValueProperty="Id"
-                                        Placeholder="--Tất cả--"
-                                        @bind-Value="@request.SpecializedId" />
-                    </div>
-                </div>
+               
                 <div class="col-sm-3 padding-left-0">
                     <div class="form-group">
                         <RadzenLabel class="form-label" Text="Lớp" />
@@ -131,18 +100,7 @@
                     </ul>
                 </Template>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="CreatedBy" Title="Người tạo" />
-            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="CreatedDate" Title="Ngày tạo">
-                <Template Context="data">
-                    @(data.CreatedDate.ToString(Constants.DateFormat))
-                </Template>
-            </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="ModifiedBy" Title="Người sửa" />
-            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="ModifiedDate" Title="Ngày sửa">
-                <Template Context="data">
-                    @(data.ModifiedDate?.ToString(Constants.DateFormat))
-                </Template>
-            </RadzenDataGridColumn>
+           
         </Columns>
     </RadzenDataGrid>
 </div>

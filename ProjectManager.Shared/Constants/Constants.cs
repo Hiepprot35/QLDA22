@@ -36,6 +36,7 @@
             public static readonly string ModelStateMessage = "Model State Invalid";
             public static readonly string IdNotFound = "Không tìm thấy Id";
             public static readonly string Validation = "Dữ liệu có chứa kí tự không hợp lệ";
+            public static readonly string Idexist = "Mã số đã tồn tại";
 
             public static readonly string RecordNotFoundMessage = "Không tìm thấy bản ghi";
             public static readonly string DeleteSuccess = "Xóa thông tin thành công";

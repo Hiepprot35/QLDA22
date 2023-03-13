@@ -51,6 +51,7 @@ namespace ProjectManager.Services.Api
                     }
 
                     var delete = await _unitOfWork.InternRepository.GetSingleAsync(x => x.Id == id && !x.IsDeleted);
+
                     if (delete == null || delete.Id <= 0)
                     {
                         return new PagedResult<bool>
@@ -64,7 +65,7 @@ namespace ProjectManager.Services.Api
                     delete.DeletedBy = username;
                     delete.DeletedDate = DateTime.Now;
 
-                    _unitOfWork.InternRepository.Update(delete);
+                    _unitOfWork.InternRepository.DeleteWhere(x => x.Id == id && !x.IsDeleted);
                     var result = _unitOfWork.InternRepository.Commit();
                     _unitOfWork.CommitTransaction();
                     if (result)
@@ -243,7 +244,7 @@ namespace ProjectManager.Services.Api
                                 Data = false
                             };
                         }
-
+                        update.ID_Intern = request.ID_Intern;
                         update.Name = request.Name;
                         update.TeacherId = request.TeacherId;
                         update.Point = request.Point;

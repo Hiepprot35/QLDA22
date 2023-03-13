@@ -72,6 +72,7 @@ namespace ProjectManager.Admin.Pages.Intern
                 if (result.ResponseCode == 200)
                 {
                     data = result.Data;
+                
                     count = result.TotalRecords;
                     internStatus = -3;
                 }

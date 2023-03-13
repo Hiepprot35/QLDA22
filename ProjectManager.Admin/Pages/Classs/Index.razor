@@ -49,22 +49,7 @@
                                         @bind-Value="@request.SpecializedId" />
                     </div>
                 </div>
-                <div class="col-sm-3 padding-left-0">
-                    <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Niên khóa" />
-                        <RadzenDropDown class="radzen-dropdown"
-                                        AllowClear="true"
-                                        TValue="long?"
-                                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                        FilterOperator="StringFilterOperator.Contains"
-                                        AllowFiltering="true"
-                                        Data="@listSchoolYear"
-                                        TextProperty="Name"
-                                        ValueProperty="Id"
-                                        Placeholder="--Tất cả--"
-                                        @bind-Value="@request.SchoolYearId" />
-                    </div>
-                </div>
+                
             </div>
             <div class="row">
                 <div class="col-sm-12">
@@ -113,7 +98,7 @@
                 </FooterTemplate>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="50px" TItem="ClasssViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="id_classs" Title="Tên lớp" />
+            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="ID_Classs" Title="Mã lớp" />
 
             <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="Name" Title="Tên lớp" />
             <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="DepartmentName" Title="Khoa" />
@@ -126,18 +111,7 @@
                     </ul>
                 </Template>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="CreatedBy" Title="Người tạo" />
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="CreatedDate" Title="Ngày tạo">
-                <Template Context="data">
-                    @(data.CreatedDate.ToString(Constants.DateFormat))
-                </Template>
-            </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="ModifiedBy" Title="Người sửa" />
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="ModifiedDate" Title="Ngày sửa">
-                <Template Context="data">
-                    @(data.ModifiedDate?.ToString(Constants.DateFormat))
-                </Template>
-            </RadzenDataGridColumn>
+         
         </Columns>
     </RadzenDataGrid>
 </div>

@@ -123,9 +123,14 @@
                 </FooterTemplate>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="50px" TItem="InternViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn Width="500px" TItem="InternViewModel" Property="Id" Title="Mã thực tập">
+                <Template Context="data">
+                    @data.ID_Intern
+                </Template>
+            </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="100px" TItem="InternViewModel" Property="Id" Title="Tên nơi thực tập">
                 <Template Context="data">
-                    <a href="@data.LinkDownload" target="_blank">@data.Name</a>
+                   @data.Name
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="100px" TItem="InternViewModel" Property="Id" Title="Sinh viên thực hiện">

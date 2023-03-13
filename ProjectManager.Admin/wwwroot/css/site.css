@@ -9,7 +9,10 @@ html, body {
 a, .btn-link {
     color: #0366d6;
 }
-
+.login-box
+{
+    border-radius:5rem;
+}
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -883,9 +886,7 @@ input:focus-visible, textarea:focus-visible {
         margin-bottom: 0;
     }
 
-.card-primary.card-outline {
-    border-top: 3px solid #007bff;
-}
+
 
 .card {
     box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
@@ -924,10 +925,13 @@ input:focus-visible, textarea:focus-visible {
     .card-header a {
         text-decoration: none;
     }
+    .card-header img{
+        padding:6rem 6rem 4rem 6rem;
+    }
 
-.text-center {
-    text-align: center !important;
-}
+    .text-center {
+        text-align: center !important;
+    }
 
 .card-body {
     -webkit-flex: 1 1 auto;

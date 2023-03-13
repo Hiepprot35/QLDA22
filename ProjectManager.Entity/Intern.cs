@@ -9,6 +9,8 @@ namespace ProjectManager.Entity
 {
     public class Intern : Base
     {
+
+
         public string Name { get; set; }
         public string Point { get; set; }
         public string LinkDownload { get; set; }
@@ -22,6 +24,8 @@ namespace ProjectManager.Entity
         public DateTime? DeletedDate { get; set; }
         public bool IsDeleted { get; set; }
         public string ID_Intern { get; set; }
+        
+
     }
 }
 #pragma warning restore 1591

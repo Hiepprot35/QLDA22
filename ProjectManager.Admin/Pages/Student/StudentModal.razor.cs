@@ -30,6 +30,7 @@ namespace ProjectManager.Admin.Pages.Student
 
             if (studentViewModel.Id > 0)
             {
+                editModel.ID_Student = studentViewModel.ID_Student;
                 editModel.Id = studentViewModel.Id;
                 editModel.Username = studentViewModel.Username;
                 editModel.Name = studentViewModel.Name;

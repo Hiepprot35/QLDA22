@@ -64,7 +64,7 @@ namespace ProjectManager.Services.Api
                     delete.DeletedBy = username;
                     delete.DeletedDate = DateTime.Now;
 
-                    _unitOfWork.TeacherRepository.Update(delete);
+                    _unitOfWork.TeacherRepository.DeleteWhere(x => x.Id == id && !x.IsDeleted);
                     var result = _unitOfWork.TeacherRepository.Commit();
                     _unitOfWork.CommitTransaction();
                     if (result)

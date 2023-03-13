@@ -6,23 +6,21 @@
 }
 <RadzenTemplateForm TItem="Student" Data="@editModel" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
     <div class="row">
-        @if (isShow)
-        {
-            <div class="col-sm-6 padding-right-0">
-                <div class="form-group">
-                    <RadzenLabel class="form-label" Text="Mã sinh viên" />
-                    <RadzenTextBox @bind-Value="@editModel.Username" Disabled="true" />
-                </div>
-            </div>
-        }
-        <div class="@(isShow ? "col-sm-6" : "col-sm-12")">
+        <div class="col-sm-6 padding-right-0">
             <div class="form-group">
-                <RadzenLabel class="form-label" Text="Tên sinh viên" /><span class="required">*</span>
-                <RadzenTextBox Name="Name" @bind-Value="@editModel.Name" />
-                <RadzenRequiredValidator Component="Name" Text="Thông tin bắt buộc" />
+                <RadzenLabel class="form-label" Text="Mã sinh viên" /><span class="required">*</span>
+                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.ID_Student" />
+                <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
             </div>
         </div>
-    </div>
+        <div class="col-sm-6 padding-right-0">
+            <div class="form-group">
+                <RadzenLabel class="form-label" Text="Tên sinh viên" /><span class="required">*</span>
+                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.Name" />
+                <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
+            </div>
+        </div>
+        </div>
     <div class="row">
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">

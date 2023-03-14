@@ -6,15 +6,15 @@
 }
 <RadzenTemplateForm TItem="Teacher" Data="@editModel" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
     <div class="row">
-        @if (isShow)
-        {
-            <div class="col-sm-6 padding-right-0">
-                <div class="form-group">
-                    <RadzenLabel class="form-label" Text="Mã giáo viên" />
-                    <RadzenTextBox @bind-Value="@editModel.Username" Disabled="true" />
-                </div>
+       
+            <div class="@(isShow ?"col-sm-6" : "col-sm-12")">
+            <div class="form-group">
+                <RadzenLabel class="form-label" Text="Mã giáo viên" /><span class="required">*</span>
+                <RadzenTextBox Name="TeacherName" @bind-Value="@editModel.ID_Teacher" />
+                <RadzenRequiredValidator Component="TeacherName" Text="Thông tin bắt buộc" />
             </div>
-        }
+        </div>
+   
 
         <div class="@(isShow ?"col-sm-6" : "col-sm-12")">
             <div class="form-group">

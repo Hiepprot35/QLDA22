@@ -190,6 +190,7 @@ namespace ProjectManager.Services.Api
                                 Data = false
                             };
                         }
+                        update.ID_Teacher = request.ID_Teacher;
 
                         update.Name = request.Name;
                         update.PhoneNumber = request.PhoneNumber;

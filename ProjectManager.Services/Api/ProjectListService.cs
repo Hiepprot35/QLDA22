@@ -230,12 +230,38 @@ namespace ProjectManager.Services.Api
             {
                 try
                 {
-                    request.CreatedBy = request.CreatedBy;
-                    request.CreatedDate = DateTime.Now;
+                    var result = false;
+                    if (request.Id > 0)
+                    {
+                        var update = await _unitOfWork.ProjectListRepository.GetSingleAsync(x => x.Id == request.Id && !x.IsDeleted);
+                        if (update == null || update.Id <= 0)
+                        {
+                            return new PagedResult<bool>
+                            {
+                                ResponseCode = Convert.ToInt32(HttpStatusCode.NotFound),
+                                ResponseMessage = Constants.Message.RecordNotFoundMessage,
+                                Data = false
+                            };
+                        }
+                        update.ID_ProjectList = request.ID_ProjectList;
+                        update.Name = request.Name;
+                        update.TeacherId = request.TeacherId;
+                        update.Point = request.Point;
+                        update.StudentId = request.StudentId;
+                        update.LinkDownload = request.LinkDownload;
 
-                    _unitOfWork.ProjectListRepository.Add(request);
-                    var result = _unitOfWork.ProjectListRepository.Commit();
 
+                        _unitOfWork.ProjectListRepository.Update(update);
+                        result = _unitOfWork.ClasssRepository.Commit();
+                    }
+                    else
+                    {
+                        request.CreatedBy = request.CreatedBy;
+                        request.CreatedDate = DateTime.Now;
+
+                        _unitOfWork.ProjectListRepository.Add(request);
+                        result = _unitOfWork.ClasssRepository.Commit();
+                    }
                     _unitOfWork.CommitTransaction();
                     if (result)
                     {

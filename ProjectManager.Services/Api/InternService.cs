@@ -282,7 +282,7 @@ namespace ProjectManager.Services.Api
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " ClasssService SaveAsync: " + ex.ToString());
+                    Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " InternService SaveAsync: " + ex.ToString());
                     _unitOfWork.RollbackTransaction();
                     throw;
                 }

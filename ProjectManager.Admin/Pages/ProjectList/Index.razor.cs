@@ -1,4 +1,6 @@
 ﻿using ProjectManager.Admin.Data;
+using ProjectManager.Admin.Pages.ProjectList;
+using ProjectManager.Admin.Shared.Template;
 using ProjectManager.Shared.Common.Enum;
 using ProjectManager.Shared.Constants;
 using ProjectManager.Shared.Model.Request;
@@ -16,6 +18,7 @@ namespace ProjectManager.Admin.Pages.ProjectList
         public RadzenDataGrid<ProjectListViewModel> grid;
         public IEnumerable<ProjectListViewModel> data;
         public IEnumerable<Entity.Teacher> listTeacher { get; set; }
+        public IEnumerable<Entity.Student> listStudent { get; set; }
         public IEnumerable<Entity.SchoolYear> listSchoolYear { get; set; }
         public List<StatusViewModel> listStatus { get; set; }
         public bool isLoading;
@@ -79,6 +82,16 @@ namespace ProjectManager.Admin.Pages.ProjectList
         {
             await _dialogService.OpenAsync<ProjectListModal>("Xem dữ liệu",
             new Dictionary<string, object>() { { "projectListViewModel", data }, { "grid", grid } });
+        }
+        public async Task ShowModalEditProjectList(ProjectListViewModel data)
+        {
+            await _dialogService.OpenAsync<EditProjectListModal>(data.Id > 0 ? "Sửa dữ liệu" : "Tạo dữ liệu",
+            new Dictionary<string, object>() { { "ProjectListViewModel", data }, { "grid", grid }, { "listStudent", listStudent }, { "listTeacher", listTeacher } });
+        }
+        public async Task ShowModalDelete(long id)
+        {
+            await _dialogService.OpenAsync<TemplateConfirm>(Constants.Notify,
+            new Dictionary<string, object>() { { "table", Constants.FromDelete.ProjectList }, { "id", id }, { "gridProjectList", grid } });
         }
 
     }

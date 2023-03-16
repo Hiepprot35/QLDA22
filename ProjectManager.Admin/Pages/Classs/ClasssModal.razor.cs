@@ -62,12 +62,14 @@ namespace ProjectManager.Admin.Pages.Classs
         public async Task OnSubmit()
         {
             var regex = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
-            var isValid = regex.IsMatch(editModel.Name);
+            var isValid_id = regex.IsMatch(editModel.ID_Classs);
+            var isValid_name = regex.IsMatch(editModel.Name);
+
             var message = new NotificationMessage();
             message.Duration = 4000;
 
             editModel.CreatedBy = userName;
-            if (isValid)
+            if (isValid_id && isValid_name)
             {
                 if (editModel.Id > 0)
                 {

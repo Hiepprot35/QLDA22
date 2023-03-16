@@ -9,15 +9,15 @@
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Mã thực tập" /><span class="required">*</span>
-                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.ID_Intern" />
-                <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
+                <RadzenTextBox Name="InternID" @bind-Value="@editModel.ID_Intern" />
+                <RadzenRequiredValidator Component="InternID" Text="Thông tin bắt buộc" />
             </div>
         </div>
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Tên nơi thực tập" /><span class="required">*</span>
-                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.Name" />
-                <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
+                <RadzenTextBox Name="InternName" @bind-Value="@editModel.Name" />
+                <RadzenRequiredValidator Component="InternName" Text="Thông tin bắt buộc" />
             </div>
         </div>
         <div class="col-sm-6">

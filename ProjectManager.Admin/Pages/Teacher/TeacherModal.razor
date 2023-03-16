@@ -10,8 +10,8 @@
             <div class="@(isShow ?"col-sm-6" : "col-sm-12")">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Mã giáo viên" /><span class="required">*</span>
-                <RadzenTextBox Name="TeacherName" @bind-Value="@editModel.ID_Teacher" />
-                <RadzenRequiredValidator Component="TeacherName" Text="Thông tin bắt buộc" />
+                <RadzenTextBox Name="TeacherID" @bind-Value="@editModel.ID_Teacher" />
+                <RadzenRequiredValidator Component="TeacherID" Text="Thông tin bắt buộc" />
             </div>
         </div>
    

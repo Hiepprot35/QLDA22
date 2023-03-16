@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Mã sinh viên" />
+                        <RadzenLabel class="form-label" Text="Tên đồ án" />
                         <RadzenTextBox Placeholder="Mã sinh viên..." @bind-Value="@request.SearchText" />
                     </div>
                 </div>
@@ -129,7 +129,7 @@
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="100px" TItem="ProjectListViewModel" Property="Id" Title="Sinh viên thực hiện">
                 <Template Context="data">
-                    @data.StudentCode - @data.StudentName
+                    @data.StudentName
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="200px" TItem="ProjectListViewModel" Property="Id" Title="Giảng viên hướng dẫn">

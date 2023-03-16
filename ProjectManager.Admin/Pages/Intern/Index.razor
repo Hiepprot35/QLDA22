@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Mã thực tập" />
+                        <RadzenLabel class="form-label" Text="Tên thực tập" />
                         <RadzenTextBox Placeholder="Mã thực tập..." @bind-Value="@request.SearchText" />
                     </div>
                 </div>
@@ -39,22 +39,7 @@
                                         @bind-Value="@request.TeacherId" />
                     </div>
                 </div>
-                <div class="col-sm-3 padding-left-0">
-                    <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Niên khóa" />
-                        <RadzenDropDown class="radzen-dropdown"
-                                        AllowClear="true"
-                                        TValue="long?"
-                                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                        FilterOperator="StringFilterOperator.Contains"
-                                        AllowFiltering="true"
-                                        Data="@listStudent"
-                                        TextProperty="Name"
-                                        ValueProperty="Id"
-                                        Placeholder="--Tất cả--"
-                                        @bind-Value="@request.StudentId" />
-                    </div>
-                </div>
+             
                 <div class="col-sm-3 padding-left-0">
                     <div class="form-group">
                         <RadzenLabel class="form-label" Text="Trạng thái" />
@@ -135,12 +120,12 @@
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="100px" TItem="InternViewModel" Property="Id" Title="Sinh viên thực hiện">
                 <Template Context="data">
-                    @data.StudentCode - @data.StudentName
+                    @data.StudentCode @data.StudentName
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Giảng viên hướng dẫn">
                 <Template Context="data">                    
-                       @data.TeacherName
+                       MSGV @data.TeacherCode -Tên @data.TeacherName
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Mô tả">

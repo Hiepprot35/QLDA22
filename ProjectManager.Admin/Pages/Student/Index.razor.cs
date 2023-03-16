@@ -66,7 +66,12 @@ namespace ProjectManager.Admin.Pages.Student
 
         public async Task OnSearch()
         {
-            await grid.FirstPage();
+            var result = await _studentService.GetAllAsync(request, token);
+            if (result.ResponseCode == 200)
+            {
+                data = result.Data; // Gán dữ liệu vào bảng
+                await grid.Reload(); // Reload bảng để hiển thị dữ liệu mới
+            }
         }
 
         public async Task ShowModal(StudentViewModel data)

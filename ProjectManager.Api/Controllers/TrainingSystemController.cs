@@ -14,7 +14,6 @@ namespace ProjectManager.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class TrainingSystemController : ControllerBase
     {
         private readonly ITrainingSystemService _trainingSystemService;

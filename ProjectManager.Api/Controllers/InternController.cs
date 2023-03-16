@@ -14,7 +14,7 @@ namespace ProjectManager.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+ 
     public class InternController : ControllerBase
     {
         private readonly IInternService _internservice;

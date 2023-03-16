@@ -14,7 +14,6 @@ namespace ProjectManager.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ProjectListController : ControllerBase
     {
         private readonly IProjectListService _projectListService;

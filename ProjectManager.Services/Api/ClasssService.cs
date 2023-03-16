@@ -118,8 +118,7 @@ namespace ProjectManager.Services.Api
                     };
                 }
 
-                var listStudent = _unitOfWork.StudentRepository.GetAll().Where(x => !x.IsDeleted);
-
+                var listStudent = _unitOfWork.StudentRepository.GetAll();
                 var i = 0;
                 list.ToList().ForEach(x =>
                 {
@@ -199,7 +198,7 @@ namespace ProjectManager.Services.Api
                         update.SchoolYearId = request.SchoolYearId;
                         update.ModifiedBy = request.ModifiedBy;
                         update.ModifiedDate = DateTime.Now;
-
+                        update.ID_Classs = request.ID_Classs;
                         _unitOfWork.ClasssRepository.Update(update);
                         result = _unitOfWork.ClasssRepository.Commit();
                     }

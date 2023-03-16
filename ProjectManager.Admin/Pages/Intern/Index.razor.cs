@@ -91,8 +91,13 @@ namespace ProjectManager.Admin.Pages.Intern
 
             public async Task OnSearch()
             {
-                await grid.FirstPage();
+            var result = await _internService.GetAllAsync(request, token);
+            if (result.ResponseCode == 200)
+            {
+                data = result.Data; // Gán dữ liệu vào bảng
+                await grid.Reload(); // Reload bảng để hiển thị dữ liệu mới
             }
+        }
         public async Task ShowModalEditIntern(InternViewModel data)
         {
             await _dialogService.OpenAsync<EditInternModal>(data.Id > 0 ? "Sửa dữ liệu" : "Tạo dữ liệu",

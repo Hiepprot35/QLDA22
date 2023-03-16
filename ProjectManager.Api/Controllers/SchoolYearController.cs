@@ -14,7 +14,6 @@ namespace ProjectManager.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class SchoolYearController : ControllerBase
     {
         private readonly ISchoolYearService _schoolYearService;

@@ -16,6 +16,7 @@ namespace ProjectManager.Entity
         public string Email { get; set; }
         public string Address { get; set; }
         public DateTime? DateOfBirth { get; set; }
+        public string Gender { get; set; }
         public long? DepartmentId { get; set; }
         public long? SpecializedId { get; set; }
         public string CreatedBy { get; set; }

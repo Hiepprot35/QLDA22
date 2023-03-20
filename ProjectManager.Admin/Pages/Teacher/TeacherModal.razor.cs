@@ -25,6 +25,7 @@ namespace ProjectManager.Admin.Pages.Teacher
 
             if (teacherViewModel.Id > 0)
             {
+                editModel.ID_Teacher = teacherViewModel.ID_Teacher;
                 editModel.Id = teacherViewModel.Id;
                 editModel.Username = teacherViewModel.Username;
                 editModel.Name = teacherViewModel.Name;
@@ -32,6 +33,7 @@ namespace ProjectManager.Admin.Pages.Teacher
                 editModel.Email = teacherViewModel.Email;
                 editModel.Address = teacherViewModel.Address;
                 editModel.DateOfBirth = teacherViewModel.DateOfBirth;
+                editModel.Gender = teacherViewModel.Gender;
                 editModel.DepartmentId = teacherViewModel.DepartmentId;
                 editModel.SpecializedId = teacherViewModel.SpecializedId;
                 editModel.CreatedBy = teacherViewModel.CreatedBy;

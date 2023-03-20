@@ -20,59 +20,21 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <RadzenLabel class="form-label" Text="Tên thực tập" />
-                        <RadzenTextBox Placeholder="Mã thực tập..." @bind-Value="@request.SearchText" />
+                        <RadzenTextBox Placeholder="Tên thực tập..." @bind-Value="@request.SearchText" />
                     </div>
                 </div>
-                <div class="col-sm-3 padding-left-0">
+                <div class="col-sm-9">
                     <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Giáo viên hướng dẫn" />
-                        <RadzenDropDown class="radzen-dropdown"
-                                        AllowClear="true"
-                                        TValue="long?"
-                                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                        FilterOperator="StringFilterOperator.Contains"
-                                        AllowFiltering="true"
-                                        Data="@listTeacher"
-                                        TextProperty="Name"
-                                        ValueProperty="Id"
-                                        Placeholder="--Tất cả--"
-                                        @bind-Value="@request.TeacherId" />
-                    </div>
-                </div>
-             
-                <div class="col-sm-3 padding-left-0">
-                    <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Trạng thái" />
-                        <RadzenDropDown class="radzen-dropdown"
-                                        AllowClear="false"
-                                        TValue="long"
-                                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                        FilterOperator="StringFilterOperator.Contains"
-                                        AllowFiltering="true"
-                                        Data="@listStatus"
-                                        TextProperty="Name"
-                                        ValueProperty="Id"
-                                        Placeholder="--Tất cả--"
-                                        @bind-Value="@request.Status" />
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="row-search-form">
-                        <RadzenButton type="submit" class="btn btn-success btn-search-form">
+                        <RadzenButton type="submit" Style="margin: 20px 15px;" class="btn btn-success btn-search-form col-lg-2 col-md col-sm">
                             <RadzenIcon Icon="search" class="material-icons-custom" />Tìm kiếm
                         </RadzenButton>
+
                         <RadzenButton class="btn btn-success btn-add-form" Click="@(args => ShowModalEditIntern(new InternViewModel()))">
                             <RadzenIcon Icon="add_circle_outline" class="material-icons-custom" />Thêm mới
                         </RadzenButton>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </RadzenTemplateForm>
     <div class="clearfix"></div>
@@ -93,9 +55,9 @@
         <Columns>
             <RadzenDataGridColumn Width="120px" TItem="InternViewModel" Title="Thao tác" Frozen="true" TextAlign="TextAlign.Center">
                 <Template Context="data">
-                    <RadzenButton class="btn btn-grid-edit" title="Xem dữ liệu" Click="@(args => ShowModal(data))">
+                    @*<RadzenButton class="btn btn-grid-edit" title="Xem dữ liệu" Click="@(args => ShowModal(data))">
                         <RadzenIcon Icon="create" class="material-icons-custom" />
-                    </RadzenButton>
+                    </RadzenButton>*@
                     <RadzenButton class="btn btn-grid-delete" title="Xóa dữ liệu" Click="@(args => ShowModalDelete(data.Id))">
                         <RadzenIcon Icon="delete_forever" class="material-icons-custom" />
                     </RadzenButton>

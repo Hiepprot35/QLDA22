@@ -28,6 +28,7 @@ namespace ProjectManager.Admin.Pages.Specialized
             if (specializedViewModel.Id > 0)
             {
                 editModel.Id = specializedViewModel.Id;
+                editModel.ID_Specialized = specializedViewModel.ID_Specialized;
                 editModel.Name = specializedViewModel.Name;
                 editModel.DepartmentId = specializedViewModel.DepartmentId;
                 editModel.Discriptions = specializedViewModel.Discriptions;

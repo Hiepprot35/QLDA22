@@ -17,6 +17,7 @@ namespace ProjectManager.Services.Api
 {
     public interface ITeacherService
     {
+        Task<IPagedResults<TeacherViewModel>> GetTeacherBySpecializedAsync(long specializedId);
         Task<IPagedResults<TeacherViewModel>> GetAllAsync(TeacherRequest request);
         Task<IPagedResult<bool>> SaveAsync(Teacher request);
         Task<IPagedResult<bool>> DeleteAsync(long id, string username);
@@ -140,6 +141,40 @@ namespace ProjectManager.Services.Api
             }
         }
 
+        public async Task<IPagedResults<TeacherViewModel>> GetTeacherBySpecializedAsync(long specializedId)
+        {
+            try
+            {
+                var dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add(Constants.Key, specializedId);
+                var list = await _dapperRepository.QueryMultipleUsingStoreProcAsync<TeacherViewModel>("uspTeacher_SelectBySpecialized", dynamicParameters);
+
+                if (null == list)
+                {
+                    return new PagedResults<TeacherViewModel>
+                    {
+                        ResponseCode = Convert.ToInt32(HttpStatusCode.NotFound),
+                        ResponseMessage = Constants.Message.RecordNotFoundMessage,
+                        Data = null,
+                        TotalRecords = 0
+                    };
+                }
+
+                return new PagedResults<TeacherViewModel>
+                {
+                    ResponseCode = Convert.ToInt32(HttpStatusCode.OK),
+                    ResponseMessage = Constants.Message.Successfully,
+                    Data = list,
+                    TotalRecords = list.FirstOrDefault()?.TotalRow ?? 0
+                };
+            }
+            catch (Exception ex)
+            {
+                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " StudentService GetStudentByClasssAsync: " + ex.ToString());
+                throw;
+            }
+        }
+
         public IPagedResults<Teacher> GetAllTeacherAsync()
         {
             try
@@ -197,6 +232,7 @@ namespace ProjectManager.Services.Api
                         update.Email = request.Email;
                         update.Address = request.Address;
                         update.DateOfBirth = request.DateOfBirth;
+                        update.Gender = request.Gender;
                         update.DepartmentId = request.DepartmentId;
                         update.SpecializedId = request.SpecializedId;
                         update.ModifiedBy = request.ModifiedBy;

@@ -266,6 +266,7 @@ namespace ProjectManager.Services.Api
                         update.PhoneNumber = request.PhoneNumber;
                         update.Email = request.Email;
                         update.Address = request.Address;
+                        update.Gender = request.Gender;
                         update.DateOfBirth = request.DateOfBirth;
                         update.SpecializedId = request.SpecializedId;
                         update.TrainingSystemId = request.TrainingSystemId;

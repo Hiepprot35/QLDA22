@@ -63,7 +63,7 @@ namespace ProjectManager.Services.Api
                     delete.DeletedBy = username;
                     delete.DeletedDate = DateTime.Now;
 
-                    _unitOfWork.SpecializedRepository.Update(delete);
+                    _unitOfWork.SpecializedRepository.DeleteWhere(x => x.Id == id && !x.IsDeleted);
                     var result = _unitOfWork.SpecializedRepository.Commit();
                     _unitOfWork.CommitTransaction();
                     if (result)
@@ -187,7 +187,7 @@ namespace ProjectManager.Services.Api
                                 Data = false
                             };
                         }
-
+                        update.ID_Specialized = request.ID_Specialized;
                         update.Name = request.Name;
                         update.Discriptions = request.Discriptions;
                         update.DepartmentId = request.DepartmentId;

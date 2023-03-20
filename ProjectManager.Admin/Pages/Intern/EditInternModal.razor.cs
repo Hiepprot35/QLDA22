@@ -106,14 +106,16 @@ namespace ProjectManager.Admin.Pages.Intern
 
         public async Task OnSubmit()
         {
+            var isNum = new Regex("^(?:[1-9]|10|\\d\\.\\d)$");
+
             var regex = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
             var isValid_name = regex.IsMatch(editModel.Name);
             var isValid_id = regex.IsMatch(editModel.ID_Intern);
-
+            var isNumcheck = isNum.IsMatch(editModel.Point);
             var message = new NotificationMessage();
             message.Duration = 4000;
             editModel.CreatedBy = userName;
-            if (isValid_id && isValid_name)
+            if (isValid_id && isValid_name && isNumcheck)
             {
                 if (editModel.Id > 0)
                 {

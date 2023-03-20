@@ -5,52 +5,47 @@
     <TemplatedLoadingPopup />
 }
 <RadzenTemplateForm TItem="Student" Data="@editModel" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
+
+
     <div class="row">
-        <div class="col-sm-6 padding-right-0">
+        @*Mã sinh viênn*@
+        <div class="@(isShow ?"col-sm-6" : "col-sm-12")">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Mã sinh viên" /><span class="required">*</span>
                 <RadzenTextBox Name="StudentID" @bind-Value="@editModel.ID_Student" />
                 <RadzenRequiredValidator Component="StudentID" Text="Thông tin bắt buộc" />
             </div>
         </div>
-        <div class="col-sm-6 padding-right-0">
-            <div class="form-group">
+
+        @*Tên sinh viên*@
+        <div class="@(isShow ?"col-sm-6" : "col-sm-12")">
+           <div class="form-group">
                 <RadzenLabel class="form-label" Text="Tên sinh viên" /><span class="required">*</span>
                 <RadzenTextBox Name="StudentName" @bind-Value="@editModel.Name" />
                 <RadzenRequiredValidator Component="StudentName" Text="Thông tin bắt buộc" />
             </div>
         </div>
-        </div>
-    <div class="row">
-        <div class="col-sm-6 padding-right-0">
-            <div class="form-group">
-                <RadzenLabel class="form-label" Text="Số điện thoại" />
-                <RadzenTextBox @bind-Value="@editModel.PhoneNumber" />
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <RadzenLabel class="form-label" Text="Email" />
-                <RadzenTextBox @bind-Value="@editModel.Email" />
-            </div>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 padding-right-0">
-            <div class="form-group">
-                <RadzenLabel class="form-label" Text="Quê quán" />
-                <RadzenTextBox @bind-Value="@editModel.Address" />
-            </div>
-        </div>
+
+
+
+     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Ngày sinh" />
                 <RadzenDatePicker class="radzen-date-picker" @bind-Value="@editModel.DateOfBirth" DateFormat="@Constants.DateFormat2" />
             </div>
         </div>
-    </div>
-   
-    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <RadzenLabel class="form-label" Text="Giới tính" />
+                 <RadzenTextBox @bind-Value="@editModel.Gender" />
+            </div>
+        </div>
+     </div>
+
+     <div class="row">
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Lớp" />
@@ -69,6 +64,34 @@
         </div>
        
     </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <RadzenLabel class="form-label" Text="Địa chỉ" />
+                <RadzenTextBox @bind-Value="@editModel.Address" />
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 padding-right-0">
+            <div class="form-group">
+                <RadzenLabel class="form-label" Text="Số điện thoại" />
+                <RadzenTextBox @bind-Value="@editModel.PhoneNumber" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <RadzenLabel class="form-label" Text="Email" />
+                <RadzenTextBox @bind-Value="@editModel.Email" />
+            </div>
+        </div>
+    </div>
+    
+   
+    
 
     @if (isShow)
     {
@@ -104,10 +127,12 @@
 
     <div class="modal-footer">
         <RadzenButton class="btn btn-danger" Click="@Cancel">
-            <RadzenIcon Icon="close" class="material-icons-custom" />Đóng
+            <RadzenIcon Icon="close" class="material-icons-custom" />Hủy
         </RadzenButton>
         <RadzenButton type="submit" class="btn btn-primary">
-            <RadzenIcon Icon="save" class="material-icons-custom" />Lưu
+            <RadzenIcon Icon="save" class="material-icons-custom" />Thêm
         </RadzenButton>
     </div>
+
+
 </RadzenTemplateForm>

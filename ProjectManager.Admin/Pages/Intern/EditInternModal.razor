@@ -32,8 +32,11 @@
                                 Data="@listStudent"
                                 TextProperty="Name"
                                 ValueProperty="Id"
+                                Name="ListStudent"
                                 Placeholder="--Tất cả--"
                                 @bind-Value="@editModel.StudentId" />
+                <RadzenRequiredValidator Component="ListStudent" Text="Thông tin bắt buộc" />
+
             </div>
         </div>
     </div>
@@ -50,8 +53,11 @@
                                 Data="@listTeacher"
                                 TextProperty="Name"
                                 ValueProperty="Id"
+                                Name="ListTeacher"
                                 Placeholder="--Tất cả--"
                                 @bind-Value="@editModel.TeacherId" />
+                <RadzenRequiredValidator Component="ListTeacher" Text="Thông tin bắt buộc" />
+
             </div>
         </div>
         
@@ -60,7 +66,7 @@
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Điểm" /><span class="required">*</span>
-                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.Point" />
+                <RadzenNumeric Name="ClassName" itemtype="Number" @bind-Value="@editModel.Point" />
                 <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
             </div>
         </div>

@@ -111,6 +111,7 @@ namespace ProjectManager.Services.Api
 
                 if (null == list)
                 {
+
                     return new PagedResults<InternViewModel>
                     {
                         ResponseCode = Convert.ToInt32(HttpStatusCode.NotFound),

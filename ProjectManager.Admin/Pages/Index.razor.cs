@@ -50,8 +50,8 @@ namespace ProjectManager.Admin.Pages
 
             var intern = await _internService.GetAllInternAsync(token);
             totalInternt = intern.TotalRecords;
-            totalSuccess = intern.Data.Where(x => Convert.ToDecimal(x.Point) >= Convert.ToDecimal("0")).Count();
-            totalFail = intern.Data.Where(x => Convert.ToDecimal(x.Point) < Convert.ToDecimal("0")).Count();
+            //totalSuccess = intern.Data.Where(x => Convert.ToDecimal(x.Point) >= Convert.ToDecimal("0")).Count();
+            //totalFail = intern.Data.Where(x => Convert.ToDecimal(x.Point) < Convert.ToDecimal("0")).Count();
 
             await Delay();
             isLoading = false;

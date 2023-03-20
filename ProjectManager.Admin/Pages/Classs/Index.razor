@@ -17,20 +17,18 @@
                         <RadzenTextBox Placeholder="Tên lớp..." @bind-Value="@request.SearchText" />
                     </div>
                 </div>
-                
-                
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="row-search-form">
-                        <RadzenButton type="sumbit" class="btn btn-success btn-search-form margin-right-10">
-                            <RadzenIcon Icon="search" class="material-icons-custom"  />Tìm kiếm
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <RadzenButton type="submit" Style="margin: 20px 15px;" class="btn btn-success btn-search-form col-lg-2 col-md col-sm">
+                            <RadzenIcon Icon="search" class="material-icons-custom" />Tìm kiếm
                         </RadzenButton>
+
                         <RadzenButton class="btn btn-success btn-add-form" Click="@(args => ShowModal(new ClasssViewModel()))">
                             <RadzenIcon Icon="add_circle_outline" class="material-icons-custom" />Thêm mới
                         </RadzenButton>
                     </div>
                 </div>
+                
             </div>
         </div>
     </RadzenTemplateForm>

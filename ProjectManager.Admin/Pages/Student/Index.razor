@@ -9,6 +9,7 @@
     <RadzenTemplateForm TItem="StudentRequest" Data="@request" Submit="@OnSearch">
         <div class="search-form">
             <h3 class="box-title">Quản lý sinh viên</h3>
+
             <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
@@ -16,28 +17,9 @@
                         <RadzenTextBox Placeholder="Mã sinh viên..." @bind-Value="@request.SearchText" />
                     </div>
                 </div>
-               
-                <div class="col-sm-3 padding-left-0">
+                <div class="col-sm-9">
                     <div class="form-group">
-                        <RadzenLabel class="form-label" Text="Lớp" />
-                        <RadzenDropDown class="radzen-dropdown"
-                                        AllowClear="true"
-                                        TValue="long?"
-                                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                        FilterOperator="StringFilterOperator.Contains"
-                                        AllowFiltering="true"
-                                        Data="@listClasss"
-                                        TextProperty="Name"
-                                        ValueProperty="Id"
-                                        Placeholder="--Tất cả--"
-                                        @bind-Value="@request.ClasssId" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="row-search-form">
-                        <RadzenButton type="submit" class="btn btn-success btn-search-form margin-right-10">
+                        <RadzenButton type="submit" Style="margin: 20px 15px;" class="btn btn-success btn-search-form col-lg-2 col-md col-sm">
                             <RadzenIcon Icon="search" class="material-icons-custom" />Tìm kiếm
                         </RadzenButton>
                         <RadzenButton class="btn btn-success btn-add-form" Click="@(args => ShowModal(new StudentViewModel()))">
@@ -64,6 +46,7 @@
                     PageSize="@pageSize"
                     @ref="grid">
         <Columns>
+
             <RadzenDataGridColumn Width="120px" TItem="StudentViewModel" Title="Thao tác" Frozen="true" TextAlign="TextAlign.Center">
                 <Template Context="data">
                     <RadzenButton class="btn btn-grid-edit" title="Sửa dữ liệu" Click="@(args => ShowModal(data))">
@@ -77,25 +60,29 @@
                     Tổng số : <b> @count </b>
                 </FooterTemplate>
             </RadzenDataGridColumn>
+
+
             <RadzenDataGridColumn Width="50px" TItem="StudentViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="ID_Student" Title="Mã sinh viên" />
             <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="Name" Title="Tên sinh viên" />
+
             <RadzenDataGridColumn Width="200px" TItem="StudentViewModel" Property="Id" Title="Thông tin">
                 <Template Context="data">
                     <ul class="m-0 padding-left-20">
-                        <li>Số điện thoại: @data.PhoneNumber</li>
-                        <li>Email: @data.Email</li>
-                        <li>Quê quán: @data.Address</li>
+                        <li>Giới tính: @data.Gender</li>
                         <li>Ngày sinh: @data.DateOfBirth?.ToString(Constants.DateFormat2)</li>
+                        <li>Địa chỉ: @data.Address</li>
+                        <li>Email: @data.Email</li>
+                        <li>Số điện thoại: @data.PhoneNumber</li>
+               
                     </ul>
                 </Template>
             </RadzenDataGridColumn>
+
+
             <RadzenDataGridColumn Width="200px" TItem="StudentViewModel" Property="Id" Title="Thông tin khác">
                 <Template Context="data">
                     <ul class="m-0 padding-left-20">
-                        <li>Hệ đào tạo: @data.TrainingSystemName</li>
-                        <li>Khoa: @data.DepartmentName</li>
-                        <li>Chuyên ngành: @data.SpecializedName</li>
                         <li>Lớp: @data.ClasssName</li>
                     </ul>
                 </Template>

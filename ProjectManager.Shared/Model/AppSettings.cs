@@ -56,6 +56,7 @@
         public string Teacher_GetAll { get; set; }
         public string Teacher_Save { get; set; }
         public string Teacher_Delete { get; set; }
+        public string Teacher_GetTeacherBySpecialized { get; set; }
         public string Teacher_GetAllTeacher { get; set; }
 
         //TrainingSystem (Quản lý hệ đào tạo)

@@ -65,28 +65,15 @@
             <RadzenDataGridColumn Width="50px" TItem="StudentViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="ID_Student" Title="Mã sinh viên" />
             <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="Name" Title="Tên sinh viên" />
+            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="DateOfBirth" Title="Ngày sinh" />
+            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="Gender" Title="Giới tính" />
+            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="ClasssName" Title="Lớp" />
+            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="Address" Title="Địa chỉ" />
+            <RadzenDataGridColumn Width="100px" TItem="StudentViewModel" Property="Email" Title="Email" />
 
-            <RadzenDataGridColumn Width="200px" TItem="StudentViewModel" Property="Id" Title="Thông tin">
-                <Template Context="data">
-                    <ul class="m-0 padding-left-20">
-                        <li>Giới tính: @data.Gender</li>
-                        <li>Ngày sinh: @data.DateOfBirth?.ToString(Constants.DateFormat2)</li>
-                        <li>Địa chỉ: @data.Address</li>
-                        <li>Email: @data.Email</li>
-                        <li>Số điện thoại: @data.PhoneNumber</li>
-               
-                    </ul>
-                </Template>
-            </RadzenDataGridColumn>
+           
 
 
-            <RadzenDataGridColumn Width="200px" TItem="StudentViewModel" Property="Id" Title="Thông tin khác">
-                <Template Context="data">
-                    <ul class="m-0 padding-left-20">
-                        <li>Lớp: @data.ClasssName</li>
-                    </ul>
-                </Template>
-            </RadzenDataGridColumn>
            
         </Columns>
     </RadzenDataGrid>

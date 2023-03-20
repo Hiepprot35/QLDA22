@@ -27,7 +27,6 @@ namespace ProjectManager.Entity
         public DateTime? DeletedDate { get; set; }
         public bool IsDeleted { get; set; }
         public string ID_Teacher { get; set; }
-        public string Gender{get;set;}
 
     }
 }

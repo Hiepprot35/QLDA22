@@ -68,36 +68,20 @@
             </RadzenDataGridColumn>
 
 
+
             <RadzenDataGridColumn Width="50px" TItem="TeacherViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="ID_Teacher" Title="Mã giảng viên" />
             <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="Name" Title="Tên giảng viên" />
-            <RadzenDataGridColumn Width="200px" TItem="TeacherViewModel" Property="Id" Title="Thông tin">
-                <Template Context="data">
-                    <ul class="m-0 padding-left-20">
-                        <li>Số điện thoại: @data.PhoneNumber</li>
-                        <li>Email: @data.Email</li>
-                        <li>Giới tính: @data.Gender</li>
-                        <li>Ngày sinh: @data.DateOfBirth?.ToString(Constants.DateFormat2)</li>
-                        <li>Địa chỉ: @data.Address</li>
-                        <li>Hội đồng: @data.SpecializedName</li>
-                    </ul>
-                </Template>
-            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="DateOfBirth" Title="Ngày sinh" />
+            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="Gender" Title="Giới tính" />
+            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="ClasssName" Title="Lớp" />
+            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="Address" Title="Địa chỉ" />
+            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="Email" Title="Email" />
+
 
             @*<RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="DepartmentName" Title="Khoa" />
                 <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="SpecializedName" Title="Chuyên ngành" />*@
-            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="CreatedBy" Title="Người tạo" />
-            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="CreatedDate" Title="Ngày tạo">
-                <Template Context="data">
-                    @(data.CreatedDate.ToString(Constants.DateFormat))
-                </Template>
-            </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="ModifiedBy" Title="Người sửa" />
-            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="ModifiedDate" Title="Ngày sửa">
-                <Template Context="data">
-                    @(data.ModifiedDate?.ToString(Constants.DateFormat))
-                </Template>
-            </RadzenDataGridColumn>
+            
         </Columns>
     </RadzenDataGrid>
 </div>

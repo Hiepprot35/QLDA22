@@ -40,7 +40,17 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Giới tính" />
-                 <RadzenTextBox @bind-Value="@editModel.Gender" />
+                <RadzenDropDown class="radzen-dropdown"
+                                AllowClear="true"
+                                TValue="string"
+                                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                                FilterOperator="StringFilterOperator.Contains"
+                                AllowFiltering="true"
+                                Data="@listGender"
+                                TextProperty="gender"
+                                ValueProperty="gender"
+                                Placeholder="--Tất cả--"
+                                @bind-Value="@editModel.Gender" />
             </div>
         </div>
      </div>

@@ -65,19 +65,11 @@
                 </FooterTemplate>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="50px" TItem="ClasssViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="ID_Classs" Title="Mã lớp" />
+            <RadzenDataGridColumn Width="200px" TItem="ClasssViewModel" Property="ID_Classs" Title="Mã lớp" />
 
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="Name" Title="Tên lớp" />
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="DepartmentName" Title="Khoa" />
-            <RadzenDataGridColumn Width="100px" TItem="ClasssViewModel" Property="SpecializedName" Title="Chuyên ngành" />
-            <RadzenDataGridColumn Width="200px" TItem="ClasssViewModel" Property="Id" Title="Thông tin">
-                <Template Context="data">
-                    <ul class="m-0 padding-left-20">
-                        <li>Sĩ số: @data.Number</li>
-                        <li>Niên khóa: @data.SchoolYearName</li>
-                    </ul>
-                </Template>
-            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Width="200px" TItem="ClasssViewModel" Property="Name" Title="Tên lớp" />
+           
+          
          
         </Columns>
     </RadzenDataGrid>

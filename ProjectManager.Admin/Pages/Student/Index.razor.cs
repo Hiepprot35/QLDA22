@@ -1,4 +1,5 @@
-﻿using ProjectManager.Admin.Data;
+﻿using Microsoft.AspNetCore.Components;
+using ProjectManager.Admin.Data;
 using ProjectManager.Admin.Shared.Template;
 using ProjectManager.Shared.Constants;
 using ProjectManager.Shared.Model.Request;
@@ -22,6 +23,17 @@ namespace ProjectManager.Admin.Pages.Student
         public int count;
         public int pageSize = 10;
         public int? page = 1;
+        public class genderoj
+        {
+            public string gender { get; set; }
+
+            public genderoj(string g)
+            {
+                this.gender = g;
+            }
+
+        }
+        List<genderoj> listGender = new List<genderoj>();
 
         protected override async Task OnInitializedAsync()
         {
@@ -30,6 +42,9 @@ namespace ProjectManager.Admin.Pages.Student
 
             var department = await _departmentService.GetAllDepartmentAsync(token);
             listDepartment = department.Data;
+
+            listGender.Add(new genderoj("Nam"));
+            listGender.Add(new genderoj("Nữ"));
 
             var specialized = await _specializedService.GetAllSpecializedAsync(token);
             listSpecialized = specialized.Data;
@@ -77,7 +92,7 @@ namespace ProjectManager.Admin.Pages.Student
         public async Task ShowModal(StudentViewModel data)
         {
             await _dialogService.OpenAsync<StudentModal>(data.Id > 0 ? "Sửa dữ liệu" : "Tạo dữ liệu",
-            new Dictionary<string, object>() { { "studentViewModel", data }, { "grid", grid }, { "listDepartment", listDepartment }, { "listSpecialized", listSpecialized }, { "listClasss", listClasss } });
+            new Dictionary<string, object>() { { "studentViewModel", data }, { "grid", grid }, { "listDepartment", listDepartment }, { "listSpecialized", listSpecialized }, { "listClasss", listClasss }, { "listGender", listGender } });
         }
 
         public async Task ShowModalDelete(long id)

@@ -82,12 +82,13 @@
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="100px" TItem="InternViewModel" Property="Id" Title="Sinh viên thực hiện">
                 <Template Context="data">
-                    @data.StudentCode @data.StudentName
+                    MSSV: @data.StudentCode - Tên: @data.StudentName
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Giảng viên hướng dẫn">
                 <Template Context="data">                    
-                       MSGV @data.TeacherCode -Tên @data.TeacherName
+                       MSGV: @data.TeacherCode -
+                       Tên: @data.TeacherName
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Mô tả">

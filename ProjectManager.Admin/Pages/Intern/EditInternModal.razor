@@ -6,21 +6,21 @@
 }
 <RadzenTemplateForm TItem="Intern" Data="@editModel" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
     <div class="row">
-        <div class="col-sm-6 padding-right-0">
+        <div class="col-sm-12 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Mã thực tập" /><span class="required">*</span>
                 <RadzenTextBox Name="InternID" @bind-Value="@editModel.ID_Intern" />
                 <RadzenRequiredValidator Component="InternID" Text="Thông tin bắt buộc" />
             </div>
         </div>
-        <div class="col-sm-6 padding-right-0">
+        <div class="col-sm-12 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Tên nơi thực tập" /><span class="required">*</span>
                 <RadzenTextBox Name="InternName" @bind-Value="@editModel.Name" />
                 <RadzenRequiredValidator Component="InternName" Text="Thông tin bắt buộc" />
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-12 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Sinh viên" />
                 <RadzenDropDown class="radzen-dropdown"
@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6 padding-right-0">
+        <div class="col-sm-12 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Giảng viên" />
                 <RadzenDropDown class="radzen-dropdown"
@@ -63,14 +63,14 @@
         
     </div>
     <div class="row">
-        <div class="col-sm-6 padding-right-0">
+        <div class="col-sm-12 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Điểm" /><span class="required">*</span>
-                <RadzenNumeric Name="ClassName" itemtype="Number" @bind-Value="@editModel.Point" />
+                <RadzenTextBox Name="ClassName" @bind-Value="@editModel.Point" />
                 <RadzenRequiredValidator Component="ClassName" Text="Thông tin bắt buộc" />
             </div>
         </div>
-        <div class="col-sm-6 padding-right-0">
+        <div class="col-sm-12 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Mô tả" /><span class="required">*</span>
                 <RadzenTextBox Name="ClassName" @bind-Value="@editModel.LinkDownload" />

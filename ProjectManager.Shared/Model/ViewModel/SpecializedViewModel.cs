@@ -8,5 +8,6 @@ namespace ProjectManager.Shared.Model.ViewModel
         public long TotalRow { get; set; }
         public int Number { get; set; }
         public string DepartmentName { get; set; }
+      
     }
 }

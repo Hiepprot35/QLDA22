@@ -4,7 +4,9 @@ using ProjectManager.Shared.Constants;
 using ProjectManager.Shared.Model.ViewModel;
 using Radzen;
 using Radzen.Blazor;
+using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ProjectManager.Admin.Pages.Student
@@ -16,6 +18,8 @@ namespace ProjectManager.Admin.Pages.Student
         [Parameter] public IEnumerable<Entity.Department> listDepartment { get; set; }
         [Parameter] public IEnumerable<Entity.Specialized> listSpecialized { get; set; }
         [Parameter] public IEnumerable<Entity.Classs> listClasss { get; set; }
+        [Parameter] public IEnumerable<Student.Index.genderoj> listGender { get; set; }
+
         public IEnumerable<Entity.TrainingSystem> listTrainingSystem { get; set; }
         public Entity.Student editModel { get; set; } = new Entity.Student();
         public bool isLoading;
@@ -46,6 +50,7 @@ namespace ProjectManager.Admin.Pages.Student
                 editModel.CreatedDate = studentViewModel.CreatedDate;
                 editModel.ModifiedBy = studentViewModel.ModifiedBy;
                 editModel.ModifiedDate = studentViewModel.ModifiedDate;
+                editModel.Gender = studentViewModel.Gender;
                 isShow = true;
             }
             else
@@ -68,31 +73,59 @@ namespace ProjectManager.Admin.Pages.Student
 
         public async Task OnSubmit()
         {
+            var isNum = new Regex("^[0-9]");
+            var isId = new Regex("^[a-zA-Z0-9]");
+            var isName = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
+            var isValid_name = isName.IsMatch(editModel.Name);
+            var isValid_id = isId.IsMatch(editModel.ID_Student);
+            var isNumcheck = isNum.IsMatch(editModel.PhoneNumber);
             var message = new NotificationMessage();
             message.Duration = 4000;
 
             editModel.CreatedBy = userName;
-            if (editModel.Id > 0)
+            if (isValid_id && isValid_name && isNumcheck)
             {
-                editModel.ModifiedBy = userName;
-            }
+                if (editModel.Id > 0)
+                {
+                    editModel.ModifiedBy = userName;
+                }
+                try
+                {
 
-            var result = await _studentService.SaveAsync(editModel, token);
+                    var result = await _studentService.SaveAsync(editModel, token);
 
-            if (result.ResponseCode == 200 && result.Data == true)
-            {
-                Cancel();
-                message.Severity = NotificationSeverity.Success;
-                message.Summary = Constants.Message.Successfully;
-                await grid.Reload();
+                    if (result.ResponseCode == 200 && result.Data == true)
+                    {
+                        Cancel();
+                        message.Severity = NotificationSeverity.Success;
+                        message.Summary = Constants.Message.Successfully;
+                    }
+                    else
+                    {
+                        message.Severity = NotificationSeverity.Error;
+                        message.Summary = Constants.Message.Fail;
+                    }
+                    message.Detail = result.ResponseMessage;
+
+                }
+                catch (Exception)
+                {
+
+                    message.Severity = NotificationSeverity.Error;
+                    message.Summary = Constants.Message.Fail;
+                    message.Detail = Constants.Message.Idexist;
+                    await grid.Reload();
+                }
             }
             else
             {
                 message.Severity = NotificationSeverity.Error;
                 message.Summary = Constants.Message.Fail;
+                message.Detail = Constants.Message.Validation;
+                await grid.Reload();
             }
-            message.Detail = result.ResponseMessage;
-            message.Duration = 4000;
+
+
             _notificationService.Notify(message);
         }
     }

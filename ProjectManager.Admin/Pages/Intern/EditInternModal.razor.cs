@@ -107,10 +107,10 @@ namespace ProjectManager.Admin.Pages.Intern
         public async Task OnSubmit()
         {
             var isNum = new Regex("^(?:[1-9]|10|\\d\\.\\d)$");
-
-            var regex = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
-            var isValid_name = regex.IsMatch(editModel.Name);
-            var isValid_id = regex.IsMatch(editModel.ID_Intern);
+            var isId = new Regex("^[a-zA-Z0-9]");
+            var isName = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
+            var isValid_name = isName.IsMatch(editModel.Name);
+            var isValid_id = isId.IsMatch(editModel.ID_Intern);
             var isNumcheck = isNum.IsMatch(editModel.Point);
             var message = new NotificationMessage();
             message.Duration = 4000;
@@ -144,7 +144,6 @@ namespace ProjectManager.Admin.Pages.Intern
                 }
                 catch (Exception)
                 {
-                    Cancel();
 
                     message.Severity = NotificationSeverity.Error;
                     message.Summary = Constants.Message.Fail;
@@ -156,14 +155,10 @@ namespace ProjectManager.Admin.Pages.Intern
             }
             else
             {
-                Cancel();
                 message.Severity = NotificationSeverity.Error;
                 message.Summary = Constants.Message.Fail;
                 message.Detail = Constants.Message.Validation;
-                                    await grid.Reload();
-
-
-
+                await grid.Reload();
             }
 
 

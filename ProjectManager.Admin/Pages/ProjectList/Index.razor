@@ -47,7 +47,7 @@
                     PageSize="@pageSize"
                     @ref="grid">
         <Columns>
-            <RadzenDataGridColumn Width="120px" TItem="ProjectListViewModel" Title="Thao tác" Frozen="true" TextAlign="TextAlign.Center">
+            <RadzenDataGridColumn Width="120px" TItem="ProjectListViewModel" Title="Chức năng" Frozen="true" TextAlign="TextAlign.Center">
                 <Template Context="data">
                     @*<RadzenButton class="btn btn-grid-view-student" title="Xem dữ liệu" Click="@(args => ShowModal(data))">
                         <RadzenIcon Icon="visibility" class="material-icons-custom" />
@@ -59,11 +59,7 @@
                         <RadzenIcon Icon="delete_forever" class="material-icons-custom" />
                     </RadzenButton>
                 </Template>
-                <FooterTemplate>
-                    Tổng số : <b> @count </b>
-                </FooterTemplate>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="50px" TItem="ProjectListViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn Width="100px" TItem="ProjectListViewModel" Property="Id" Title="Mã đồ án">
                 <Template Context="data">
                     @data.ID_ProjectList
@@ -81,17 +77,15 @@
                 </Template>
             </RadzenDataGridColumn>
 
-            <RadzenDataGridColumn Width="150px" TItem="ProjectListViewModel" Property="Id" Title="Giảng viên hướng dẫn">
+            <RadzenDataGridColumn Width="150px" TItem="ProjectListViewModel" Property="Id" Title="Người thực hiện">
                 <Template Context="data">
-                    @data.TeacherCode - @data.TeacherName
+                    @data.StudentName
                 </Template>
             </RadzenDataGridColumn>
 
-            
-
-            <RadzenDataGridColumn Width="150px" TItem="ProjectListViewModel" Property="Id" Title="Sinh viên thực hiện">
+            <RadzenDataGridColumn Width="150px" TItem="ProjectListViewModel" Property="Id" Title="Giảng viên phụ trách">
                 <Template Context="data">
-                    @data.StudentName
+                    @data.TeacherCode - @data.TeacherName
                 </Template>
             </RadzenDataGridColumn>
 

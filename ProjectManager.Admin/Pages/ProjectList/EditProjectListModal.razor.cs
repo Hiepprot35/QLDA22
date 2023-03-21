@@ -92,13 +92,20 @@ namespace ProjectManager.Admin.Pages.ProjectList
 
         public async Task OnSubmit()
         {
-            var regex = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
-            var isValid_name = regex.IsMatch(editModel.Name);
-            var isValid_id = regex.IsMatch(editModel.ID_ProjectList);
+            var isNum = new Regex("^(?:[1-9]|10|\\d\\.\\d)$");
+            var isId = new Regex("^[a-zA-Z0-9]");
+            var isName = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
+
+
+            var isValid_name = isName.IsMatch(editModel.Name);
+            var isValid_id = isId.IsMatch(editModel.ID_ProjectList);
+            var isNumcheck = isNum.IsMatch(editModel.Point);
+
             var message = new NotificationMessage();
+
             message.Duration = 4000;
             editModel.CreatedBy = userName;
-            if (isValid_id && isValid_name)
+            if (isValid_id && isValid_name && isNumcheck)
             {
                 if (editModel.Id > 0)
                 {
@@ -126,23 +133,21 @@ namespace ProjectManager.Admin.Pages.ProjectList
                 }
                 catch (Exception)
                 {
-                    Cancel();
                     message.Severity = NotificationSeverity.Error;
                     message.Summary = Constants.Message.Fail;
                     message.Detail = Constants.Message.Idexist;
-                    await grid.Reload();
-                }
+               }
             }
             else
             {
-                Cancel();
                 message.Severity = NotificationSeverity.Error;
                 message.Summary = Constants.Message.Fail;
                 message.Detail = Constants.Message.Validation;
-                await grid.Reload();
             }
 
             _notificationService.Notify(message);
+            await grid.Reload();
+
         }
     }
     

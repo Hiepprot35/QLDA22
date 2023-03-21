@@ -109,9 +109,13 @@ namespace ProjectManager.Admin.Pages.Intern
             var isNum = new Regex("^(?:[1-9]|10|\\d\\.\\d)$");
             var isId = new Regex("^[a-zA-Z0-9]");
             var isName = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
+
+
             var isValid_name = isName.IsMatch(editModel.Name);
             var isValid_id = isId.IsMatch(editModel.ID_Intern);
             var isNumcheck = isNum.IsMatch(editModel.Point);
+
+
             var message = new NotificationMessage();
             message.Duration = 4000;
             editModel.CreatedBy = userName;
@@ -126,13 +130,13 @@ namespace ProjectManager.Admin.Pages.Intern
                     var result = await _internService.SaveAsync(editModel, token);
 
 
-                    await grid.Reload();
                     if (result.ResponseCode == 200 && result.Data == true)
                     {
                         Cancel();
                         message.Severity = NotificationSeverity.Success;
                         message.Summary = Constants.Message.Successfully;
                         await grid.Reload();
+
                     }
                     else
                     {
@@ -148,7 +152,6 @@ namespace ProjectManager.Admin.Pages.Intern
                     message.Severity = NotificationSeverity.Error;
                     message.Summary = Constants.Message.Fail;
                     message.Detail = Constants.Message.Idexist;
-                    await grid.Reload();
 
 
                 }
@@ -158,12 +161,14 @@ namespace ProjectManager.Admin.Pages.Intern
                 message.Severity = NotificationSeverity.Error;
                 message.Summary = Constants.Message.Fail;
                 message.Detail = Constants.Message.Validation;
-                await grid.Reload();
+
             }
 
 
 
             _notificationService.Notify(message);
+            await grid.Reload();
+
 
         }
 

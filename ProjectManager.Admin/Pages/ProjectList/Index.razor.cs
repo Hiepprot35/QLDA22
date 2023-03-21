@@ -75,9 +75,11 @@ namespace ProjectManager.Admin.Pages.ProjectList
 
         public async Task OnSearch()
         {
-            var message = new NotificationMessage();
+
 
             var result = await _projectListService.GetAllAsync(request, token);
+            var message = new NotificationMessage();
+
             if (result.ResponseCode == 200)
             {
                 if (result.TotalRecords == 0)

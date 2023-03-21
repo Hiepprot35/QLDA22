@@ -73,17 +73,17 @@ namespace ProjectManager.Admin.Pages.Student
 
         public async Task OnSubmit()
         {
-            var isNum = new Regex("^[0-9]");
+            var isNumberPhone = new Regex("^\\d{10,11}$");
             var isId = new Regex("^[a-zA-Z0-9]");
             var isName = new Regex("^[a-zA-Z0-9\\p{L}\\s]*$");
             var isValid_name = isName.IsMatch(editModel.Name);
             var isValid_id = isId.IsMatch(editModel.ID_Student);
-            var isNumcheck = isNum.IsMatch(editModel.PhoneNumber);
+            var isValid_NumberPhone = isNumberPhone.IsMatch(editModel.PhoneNumber);
             var message = new NotificationMessage();
             message.Duration = 4000;
 
             editModel.CreatedBy = userName;
-            if (isValid_id && isValid_name && isNumcheck)
+            if (isValid_id && isValid_name && isValid_NumberPhone)
             {
                 if (editModel.Id > 0)
                 {
@@ -99,6 +99,9 @@ namespace ProjectManager.Admin.Pages.Student
                         Cancel();
                         message.Severity = NotificationSeverity.Success;
                         message.Summary = Constants.Message.Successfully;
+                        await grid.Reload();
+
+
                     }
                     else
                     {
@@ -114,7 +117,6 @@ namespace ProjectManager.Admin.Pages.Student
                     message.Severity = NotificationSeverity.Error;
                     message.Summary = Constants.Message.Fail;
                     message.Detail = Constants.Message.Idexist;
-                    await grid.Reload();
                 }
             }
             else
@@ -122,11 +124,11 @@ namespace ProjectManager.Admin.Pages.Student
                 message.Severity = NotificationSeverity.Error;
                 message.Summary = Constants.Message.Fail;
                 message.Detail = Constants.Message.Validation;
-                await grid.Reload();
             }
 
 
             _notificationService.Notify(message);
+
         }
     }
 }

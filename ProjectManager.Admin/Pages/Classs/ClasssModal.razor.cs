@@ -25,8 +25,7 @@ namespace ProjectManager.Admin.Pages.Classs
 
         protected override async Task OnInitializedAsync()
         {
-            isLoading = true;
-
+          
             if (classsViewModel.Id > 0)
             {
                 editModel.ID_Classs = classsViewModel.ID_Classs;

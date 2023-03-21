@@ -63,7 +63,9 @@
         <div class="col-sm-12">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Số điện thoại" />
-                <RadzenTextBox @bind-Value="@editModel.PhoneNumber" />
+                <RadzenTextBox Name="PhoneNumber" @bind-Value="@editModel.PhoneNumber" />
+                <RadzenRequiredValidator Component="PhoneNumber" Text="Thông tin bắt buộc" />
+
             </div>
         </div>
 
@@ -73,7 +75,9 @@
         <div class="col-sm-12">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Địa chỉ" />
-                <RadzenTextBox @bind-Value="@editModel.Address" />
+                <RadzenTextBox Name="Address" @bind-Value="@editModel.Address" />
+                <RadzenRequiredValidator Component="Address" Text="Thông tin bắt buộc" />
+
             </div>
         </div>
     </div>
@@ -82,7 +86,9 @@
         <div class="col-sm-12">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Email" />
-                <RadzenTextBox @bind-Value="@editModel.Email" />
+                <RadzenTextBox Name="Email" @bind-Value="@editModel.Email" />
+                <RadzenRequiredValidator Component="Email" Text="Thông tin bắt buộc" />
+
             </div>
         </div>
     </div>

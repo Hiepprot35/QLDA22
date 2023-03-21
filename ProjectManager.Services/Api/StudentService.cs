@@ -66,7 +66,7 @@ namespace ProjectManager.Services.Api
                     delete.DeletedBy = username;
                     delete.DeletedDate = DateTime.Now;
 
-                    _unitOfWork.StudentRepository.Update(delete);
+                    _unitOfWork.StudentRepository.DeleteWhere(x => x.Id == id && !x.IsDeleted);
                     var result = _unitOfWork.StudentRepository.Commit();
                     _unitOfWork.CommitTransaction();
                     if (result)
@@ -261,7 +261,7 @@ namespace ProjectManager.Services.Api
                                 Data = false
                             };
                         }
-
+                        update.ID_Student = request.ID_Student;
                         update.Name = request.Name;
                         update.PhoneNumber = request.PhoneNumber;
                         update.Email = request.Email;

@@ -38,9 +38,12 @@
         </div>
     </div>
     <div class="row">
+
+    </div>
+    <div class="row">
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">
-                <RadzenLabel class="form-label" Text="Giảng viên" />
+                <RadzenLabel class="form-label" Text="Giảng viên chấm" />
                 <RadzenDropDown class="radzen-dropdown"
                                 AllowClear="true"
                                 TValue="long?"
@@ -54,8 +57,6 @@
                                 @bind-Value="@editModel.TeacherId" />
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="col-sm-6 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Hội đồng chấm" />
@@ -65,11 +66,11 @@
                                 FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
                                 FilterOperator="StringFilterOperator.Contains"
                                 AllowFiltering="true"
-                                Data="@listTeacher"
+                                Data="@listSpecialized"
                                 TextProperty="Name"
                                 ValueProperty="Id"
                                 Placeholder="--Tất cả--"
-                                @bind-Value="@editModel.TeacherId" />
+                                @bind-Value="@editModel.SpecializedId" />
             </div>
         </div>
 

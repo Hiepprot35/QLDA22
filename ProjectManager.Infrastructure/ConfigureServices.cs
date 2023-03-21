@@ -119,6 +119,7 @@ namespace ProjectManager.Infrastructure
                 options.Teacher_Save = appSettingOptions[nameof(AppSettings.Teacher_Save)];
                 options.Teacher_Delete = appSettingOptions[nameof(AppSettings.Teacher_Delete)];
                 options.Teacher_GetAllTeacher = appSettingOptions[nameof(AppSettings.Teacher_GetAllTeacher)];
+                options.Teacher_GetTeacherBySpecialized = appSettingOptions[nameof(AppSettings.Teacher_GetTeacherBySpecialized)];
 
                 //TrainingSystem (Quản lý hệ đào tạo)
                 options.TrainingSystem_GetAll = appSettingOptions[nameof(AppSettings.TrainingSystem_GetAll)];

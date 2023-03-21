@@ -51,7 +51,7 @@
 
         <Columns>
 
-            <RadzenDataGridColumn Width="120px" TItem="TeacherViewModel" Title="Chức năng" Frozen="true" TextAlign="TextAlign.Center">
+            <RadzenDataGridColumn Width="70px" TItem="TeacherViewModel" Title="Chức năng" Frozen="true" TextAlign="TextAlign.Center">
                 <Template Context="data">
                     <RadzenButton class="btn btn-grid-edit" title="Sửa dữ liệu" Click="@(args => ShowModal(data))">
                         <RadzenIcon Icon="create" class="material-icons-custom" />
@@ -74,7 +74,8 @@
             <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="Name" Title="Tên giảng viên" />
             <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="DateOfBirth" Title="Ngày sinh" />
             <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="Gender" Title="Giới tính" />
-            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="ClasssName" Title="Lớp" />
+            <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="PhoneNumber" Title="Số điện thoại" />
+
             <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="Address" Title="Địa chỉ" />
             <RadzenDataGridColumn Width="100px" TItem="TeacherViewModel" Property="Email" Title="Email" />
 

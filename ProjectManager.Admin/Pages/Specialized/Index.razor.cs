@@ -33,7 +33,7 @@ namespace ProjectManager.Admin.Pages.Specialized
             request.PageSize = pageSize;
             request.Page = page;
 
-            var result = await _specializedService.GetAllAsync(request, token);
+            var result = await _teacherService.GetTeacherBySpecializedAsync(request, token);
             var message = new NotificationMessage();
             if (result.ResponseCode == 200)
             {
@@ -73,11 +73,6 @@ namespace ProjectManager.Admin.Pages.Specialized
             await _dialogService.OpenAsync<TemplateConfirm>(Constants.Notify,
              new Dictionary<string, object>() { { "table", Constants.FromDelete.Specialized }, { "id", id }, { "gridSpecialized", grid } });
         }
-        public async Task ShowModalViewTeacher(long specializedId)
-        {
-            await _dialogService.OpenAsync<ViewTeacherModal>("Danh sách giảng viên",
-            new Dictionary<string, object>() { { "specializedId", specializedId } },
-            new DialogOptions() { Width = "700px" });
-        }
+       
     }
 }

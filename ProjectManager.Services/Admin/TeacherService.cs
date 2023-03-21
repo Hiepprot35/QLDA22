@@ -10,7 +10,7 @@ namespace ProjectManager.Services.Admin
 {
     public interface ITeacherService
     {
-        Task<TeacherResponse> GetTeacherBySpecializedAsync(long specializedId, string token);
+        Task<SpecializedResponse> GetTeacherBySpecializedAsync(PagingRequest request, string token);
         Task<TeacherResponse> GetAllAsync(TeacherRequest request, string token);
         Task<SaveResponse> SaveAsync(Teacher request, string token);
         Task<SaveResponse> DeleteAsync(DeleteRequest request, string token);
@@ -53,11 +53,11 @@ namespace ProjectManager.Services.Admin
             return response;
         }
 
-        public async Task<TeacherResponse> GetTeacherBySpecializedAsync(long specializedId, string token)
+        public async Task<SpecializedResponse> GetTeacherBySpecializedAsync(PagingRequest request, string token)
         {
             var client = new HttpClientHelper();
-            var response = await client.GetAsync<TeacherResponse>(_appSettings.BaseUri,
-                string.Format(_appSettings.Teacher_GetTeacherBySpecialized, specializedId),
+            var response = await client.GetAsync<SpecializedResponse>(_appSettings.BaseUri,
+                string.Format(_appSettings.Teacher_GetTeacherBySpecialized, request.Page,request.PageSize,request.SearchText),
                 token);
 
             return response;

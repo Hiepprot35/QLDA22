@@ -31,7 +31,7 @@ namespace ProjectManager.Admin.Pages.Specialized
     {
         [Parameter]
         public long specializedId { get; set; }
-
+         
         public IEnumerable<TeacherViewModel> listTeacher { get; set; }
 
         public TeacherViewModel teacher { get; set; } = new TeacherViewModel();
@@ -39,21 +39,7 @@ namespace ProjectManager.Admin.Pages.Specialized
         public bool isShow;
         protected override async Task OnInitializedAsync()
         {
-            isLoading = true;
-            var data = await _teacherService.GetTeacherBySpecializedAsync(specializedId, token);
-            listTeacher = data.Data;
-            if (listTeacher.Count() > 0)
-            {
-                isShow = true;
-                teacher = listTeacher.FirstOrDefault();
-            }
-            else
-            {
-                isShow = false;
-            }
-
-            await Delay();
-            isLoading = false;
+           
         }
 
         public void Cancel()

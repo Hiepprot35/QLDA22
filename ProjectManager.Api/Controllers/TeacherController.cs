@@ -92,5 +92,20 @@ namespace ProjectManager.Api.Controllers
                 return StatusCode(Convert.ToInt32(HttpStatusCode.InternalServerError), Constants.Message.InternalServer);
             }
         }
+        [HttpGet("GetTeacherBySpecializedAsync")]
+        public async Task<IActionResult> GetTeacherBySpecializedAsync([FromQuery] PagingRequest request)
+        {
+            try
+            {
+               
+                var result = await _teacherService.GetTeacherBySpecializedAsync(request);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " TeacherController GetTeacherBySpecializedAsync: " + ex.ToString());
+                return StatusCode(Convert.ToInt32(HttpStatusCode.InternalServerError), Constants.Message.InternalServer);
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProjectManager.Entity;
 using ProjectManager.Repository;
 using ProjectManager.Shared.Common.Pagging;
@@ -17,7 +18,7 @@ namespace ProjectManager.Services.Api
 {
     public interface ITeacherService
     {
-        Task<IPagedResults<TeacherViewModel>> GetTeacherBySpecializedAsync(long specializedId);
+        Task<IPagedResults<SpecializedViewModel>> GetTeacherBySpecializedAsync(PagingRequest request );
         Task<IPagedResults<TeacherViewModel>> GetAllAsync(TeacherRequest request);
         Task<IPagedResult<bool>> SaveAsync(Teacher request);
         Task<IPagedResult<bool>> DeleteAsync(long id, string username);
@@ -141,17 +142,21 @@ namespace ProjectManager.Services.Api
             }
         }
 
-        public async Task<IPagedResults<TeacherViewModel>> GetTeacherBySpecializedAsync(long specializedId)
+        public async Task<IPagedResults<SpecializedViewModel>> GetTeacherBySpecializedAsync(PagingRequest request)
         {
+            var page = request.Page ?? 1;
+            var pageSize = request.PageSize ?? 10;
             try
             {
                 var dynamicParameters = new DynamicParameters();
-                dynamicParameters.Add(Constants.Key, specializedId);
-                var list = await _dapperRepository.QueryMultipleUsingStoreProcAsync<TeacherViewModel>("uspTeacher_SelectBySpecialized", dynamicParameters);
+                dynamicParameters.Add(Constants.Key, request.SearchText);
+                dynamicParameters.Add(Constants.Page, page);
+                dynamicParameters.Add(Constants.PageSize, pageSize);
+                var list = await _dapperRepository.QueryMultipleUsingStoreProcAsync<SpecializedViewModel>("uspTeacher_SelectBySpecialized", dynamicParameters);
 
                 if (null == list)
                 {
-                    return new PagedResults<TeacherViewModel>
+                    return new PagedResults<SpecializedViewModel>
                     {
                         ResponseCode = Convert.ToInt32(HttpStatusCode.NotFound),
                         ResponseMessage = Constants.Message.RecordNotFoundMessage,
@@ -160,7 +165,7 @@ namespace ProjectManager.Services.Api
                     };
                 }
 
-                return new PagedResults<TeacherViewModel>
+                return new PagedResults<SpecializedViewModel>
                 {
                     ResponseCode = Convert.ToInt32(HttpStatusCode.OK),
                     ResponseMessage = Constants.Message.Successfully,

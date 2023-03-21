@@ -75,9 +75,20 @@ namespace ProjectManager.Admin.Pages.ProjectList
 
         public async Task OnSearch()
         {
+            var message = new NotificationMessage();
+
             var result = await _projectListService.GetAllAsync(request, token);
             if (result.ResponseCode == 200)
             {
+                if (result.TotalRecords == 0)
+                {
+                    message.Severity = NotificationSeverity.Error;
+                    message.Summary = Constants.Message.Fail;
+                    message.Detail = Constants.Message.RecordNotFoundMessage;
+                    message.Duration = 4000;
+                    _notificationService.Notify(message);
+                }
+
                 data = result.Data; // Gán dữ liệu vào bảng
                 await grid.Reload(); // Reload bảng để hiển thị dữ liệu mới
             }

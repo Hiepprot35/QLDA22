@@ -42,8 +42,8 @@ namespace ProjectManager.Admin.Pages
             //Tổng số đồ án
             var projectList = await _projectListService.GetAllProjectListAsync(token);
             totalProjectList = projectList.TotalRecords;
-            totalSuccess = projectList.Data.Where(x => Convert.ToDecimal(x.Point) >= Convert.ToDecimal("7")).Count();
-            totalFail = projectList.Data.Where(x => Convert.ToDecimal(x.Point) < Convert.ToDecimal("7")).Count();
+            //totalSuccess = projectList.Data.Where(x => Convert.ToDecimal(x.Point) >= Convert.ToDecimal("7")).Count();
+            //totalFail = projectList.Data.Where(x => Convert.ToDecimal(x.Point) < Convert.ToDecimal("7")).Count();
 
             await Delay();
             isLoading = false;

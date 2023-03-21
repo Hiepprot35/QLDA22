@@ -55,21 +55,14 @@
         <Columns>
             <RadzenDataGridColumn Width="120px" TItem="InternViewModel" Title="Thao tác" Frozen="true" TextAlign="TextAlign.Center">
                 <Template Context="data">
-                    @*<RadzenButton class="btn btn-grid-edit" title="Xem dữ liệu" Click="@(args => ShowModal(data))">
+                    <RadzenButton class="btn btn-grid-view-student" title="Sửa dữ liệu" Click="@(args => ShowModalEditIntern(data))">
                         <RadzenIcon Icon="create" class="material-icons-custom" />
-                    </RadzenButton>*@
+                    </RadzenButton>
                     <RadzenButton class="btn btn-grid-delete" title="Xóa dữ liệu" Click="@(args => ShowModalDelete(data.Id))">
                         <RadzenIcon Icon="delete_forever" class="material-icons-custom" />
                     </RadzenButton>
-                    <RadzenButton class="btn btn-grid-view-student" title="Sửa dữ liệu" Click="@(args => ShowModalEditIntern(data))">
-                        <RadzenIcon Icon="visibility" class="material-icons-custom" />
-                    </RadzenButton>
                 </Template>
-                <FooterTemplate>
-                    Tổng số : <b> @count </b>
-                </FooterTemplate>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="50px" TItem="InternViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn Width="50px" TItem="InternViewModel" Property="Id" Title="Mã thực tập">
                 <Template Context="data">
                     @data.ID_Intern
@@ -80,15 +73,14 @@
                    @data.Name
                 </Template>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="100px" TItem="InternViewModel" Property="Id" Title="Sinh viên thực hiện">
+            <RadzenDataGridColumn Width="100px" TItem="InternViewModel" Property="Id" Title="Tên người thực tập">
                 <Template Context="data">
-                    MSSV: @data.StudentCode - Tên: @data.StudentName
+                    @data.StudentName
                 </Template>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Giảng viên hướng dẫn">
+            <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Giảng viên phụ trách">
                 <Template Context="data">                    
-                       MSGV: @data.TeacherCode -
-                       Tên: @data.TeacherName
+                    @data.TeacherName
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Width="200px" TItem="InternViewModel" Property="Id" Title="Mô tả">

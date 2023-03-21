@@ -39,7 +39,7 @@
                     PageSize="@pageSize"
                     @ref="grid">
         <Columns>
-            <RadzenDataGridColumn Width="120px" TItem="SpecializedViewModel" Title="Thao tác" Frozen="true" TextAlign="TextAlign.Center">
+            <RadzenDataGridColumn Width="120px" TItem="SpecializedViewModel" Title="Chức năng" Frozen="true" TextAlign="TextAlign.Center">
                 <Template Context="data">
                     <RadzenButton class="btn btn-grid-edit" title="Sửa dữ liệu" Click="@(args => ShowModal(data))">
                         <RadzenIcon Icon="create" class="material-icons-custom" />
@@ -51,11 +51,7 @@
                     <RadzenIcon Icon="visibility" class="material-icons-custom" />
                     </RadzenButton>*@
                 </Template>
-                <FooterTemplate>
-                    Tổng số : <b> @count </b>
-                </FooterTemplate>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="50px" TItem="SpecializedViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn Width="100px" TItem="SpecializedViewModel" Property="ID_Specialized" Title="Mã hội đồng" />
             <RadzenDataGridColumn Width="100px" TItem="SpecializedViewModel" Property="Name" Title="Tên hội đồng" />
             <RadzenDataGridColumn Width="100px" TItem="SpecializedViewModel" Property="" Title="Chủ tịch" />

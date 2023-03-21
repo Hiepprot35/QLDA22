@@ -13,6 +13,7 @@ namespace ProjectManager.Entity
         public string Point { get; set; }
         public string LinkDownload { get; set; }
         public long? TeacherId { get; set; }
+        public long? SpecializedId { get; set; }
         public long? StudentId { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }

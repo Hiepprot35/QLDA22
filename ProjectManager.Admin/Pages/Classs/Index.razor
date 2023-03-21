@@ -48,7 +48,7 @@
                     PageSize="@pageSize"
                     @ref="grid">
         <Columns>
-            <RadzenDataGridColumn Width="120px" TItem="ClasssViewModel" Title="Thao tác" Frozen="true" TextAlign="TextAlign.Center">
+            <RadzenDataGridColumn Width="120px" TItem="ClasssViewModel" Title="Chức năng" Frozen="true" TextAlign="TextAlign.Center">
                 <Template Context="data">
                     <RadzenButton class="btn btn-grid-edit" title="Sửa dữ liệu" Click="@(args => ShowModal(data))">
                         <RadzenIcon Icon="create" class="material-icons-custom" />
@@ -56,15 +56,8 @@
                     <RadzenButton class="btn btn-grid-delete" title="Xóa dữ liệu" Click="@(args => ShowModalDelete(data.Id))">
                         <RadzenIcon Icon="delete_forever" class="material-icons-custom" />
                     </RadzenButton>
-                    <RadzenButton class="btn btn-grid-view-student" title="Xem danh sách sinh viên" Click="@(args => ShowModalViewStudent(data.Id))">
-                        <RadzenIcon Icon="visibility" class="material-icons-custom" />
-                    </RadzenButton>
                 </Template>
-                <FooterTemplate>
-                    Tổng số : <b> @count </b>
-                </FooterTemplate>
             </RadzenDataGridColumn>
-            <RadzenDataGridColumn Width="50px" TItem="ClasssViewModel" Property="STT" Title="STT" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn Width="200px" TItem="ClasssViewModel" Property="ID_Classs" Title="Mã lớp" />
 
             <RadzenDataGridColumn Width="200px" TItem="ClasssViewModel" Property="Name" Title="Tên lớp" />

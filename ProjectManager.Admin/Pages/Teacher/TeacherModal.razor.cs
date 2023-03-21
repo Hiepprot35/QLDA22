@@ -95,6 +95,7 @@ namespace ProjectManager.Admin.Pages.Teacher
                         Cancel();
                         message.Severity = NotificationSeverity.Success;
                         message.Summary = Constants.Message.Successfully;
+                        await grid.Reload();
                     }
                     else
                     {

@@ -9,18 +9,18 @@
 
     <div class="row">
         @*Mã sinh viênn*@
-        <div class="@(isShow ?"col-sm-6" : "col-sm-12")">
+        <div class="col-sm-12">
             <div class="form-group">
-                <RadzenLabel class="form-label" Text="Mã sinh viên" /><span class="required">*</span>
+                <RadzenLabel class="form-label" Text="Mã sinh viên" /><span class="required"></span>
                 <RadzenTextBox Name="StudentID" @bind-Value="@editModel.ID_Student" />
                 <RadzenRequiredValidator Component="StudentID" Text="Thông tin bắt buộc" />
             </div>
         </div>
 
         @*Tên sinh viên*@
-        <div class="@(isShow ?"col-sm-6" : "col-sm-12")">
+        <div class="col-sm-12">
            <div class="form-group">
-                <RadzenLabel class="form-label" Text="Tên sinh viên" /><span class="required">*</span>
+                <RadzenLabel class="form-label" Text="Tên sinh viên" /><span class="required"></span>
                 <RadzenTextBox Name="StudentName" @bind-Value="@editModel.Name" />
                 <RadzenRequiredValidator Component="StudentName" Text="Thông tin bắt buộc" />
             </div>
@@ -99,48 +99,13 @@
             </div>
         </div>
     </div>
-    
-   
-    
-
-    @if (isShow)
-    {
-        <div class="row">
-            <div class="col-sm-6 padding-right-0">
-                <div class="form-group">
-                    <RadzenLabel class="form-label" Text="Người tạo" />
-                    <RadzenTextBox @bind-Value="@editModel.CreatedBy" Disabled="true" />
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <RadzenLabel class="form-label" Text="Ngày tạo" />
-                    <RadzenDatePicker class="radzen-date-picker" @bind-Value="@editModel.CreatedDate" DateFormat="@Constants.DateFormat" Disabled="true" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 padding-right-0">
-                <div class="form-group">
-                    <RadzenLabel class="form-label" Text="Người sửa" />
-                    <RadzenTextBox @bind-Value="@editModel.ModifiedBy" Disabled="true" />
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <RadzenLabel class="form-label" Text="Ngày sửa" />
-                    <RadzenDatePicker class="radzen-date-picker" @bind-Value="@editModel.ModifiedDate" DateFormat="@Constants.DateFormat" Disabled="true" />
-                </div>
-            </div>
-        </div>
-    }
 
     <div class="modal-footer">
         <RadzenButton class="btn btn-danger" Click="@Cancel">
-            <RadzenIcon Icon="close" class="material-icons-custom" />Hủy
+            <RadzenIcon Icon="close" class="material-icons-custom" />Đóng
         </RadzenButton>
         <RadzenButton type="submit" class="btn btn-primary">
-            <RadzenIcon Icon="save" class="material-icons-custom" />Thêm
+            <RadzenIcon Icon="save" class="material-icons-custom" />Lưu
         </RadzenButton>
     </div>
 

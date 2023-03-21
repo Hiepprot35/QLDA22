@@ -49,6 +49,8 @@ namespace ProjectManager.Admin.Pages.ProjectList
         public bool isShow;
         protected override async Task OnInitializedAsync()
         {
+            var specialized = await _specializedService.GetAllSpecializedAsync(token);
+            listSpecialized = specialized.Data;
             var teacher = await _teacherService.GetAllTeacherAsync(token);
             listTeacher = teacher.Data;
             var student = await _studentService.GetAllStudentAsync(token);
@@ -57,6 +59,7 @@ namespace ProjectManager.Admin.Pages.ProjectList
             if (projectlistViewModel.Id > 0)
             {
                 editModel.Id = projectlistViewModel.Id;
+                editModel.SpecializedId=projectlistViewModel.SpecializedId;
                 editModel.Name = projectlistViewModel.Name;
                 editModel.StudentId = projectlistViewModel.StudentId;
                 editModel.TeacherId = projectlistViewModel.TeacherId;

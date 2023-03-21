@@ -23,6 +23,8 @@ namespace ProjectManager.Entity
         public DateTime? DeletedDate { get; set; }
         public bool IsDeleted { get; set; }
         public string ID_ProjectList { get; set; }
+        public long? SpecializedId { get; set; }
+
 
     }
 }

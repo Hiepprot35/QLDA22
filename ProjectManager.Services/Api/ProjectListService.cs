@@ -244,6 +244,7 @@ namespace ProjectManager.Services.Api
                             };
                         }
                         update.ID_ProjectList = request.ID_ProjectList;
+                        update.SpecializedId=request.SpecializedId;
                         update.Name = request.Name;
                         update.TeacherId = request.TeacherId;
                         update.Point = request.Point;

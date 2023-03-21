@@ -37,9 +37,18 @@
         </div>
     </div>
     <div class="row">
+<<<<<<< HEAD
         <div class="col-sm-12 padding-right-0">
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Giảng viên phụ trách" />
+=======
+
+    </div>
+    <div class="row">
+        <div class="col-sm-6 padding-right-0">
+            <div class="form-group">
+                <RadzenLabel class="form-label" Text="Giảng viên chấm" />
+>>>>>>> 8a34cc9a48c16b6f0625fe23e86c01c8969b9267
                 <RadzenDropDown class="radzen-dropdown"
                                 AllowClear="true"
                                 TValue="long?"
@@ -52,9 +61,13 @@
                                 @bind-Value="@editModel.TeacherId" />
             </div>
         </div>
+<<<<<<< HEAD
     </div>
     <div class="row">
         <div class="col-sm-12 padding-right-0">
+=======
+        <div class="col-sm-6 padding-right-0">
+>>>>>>> 8a34cc9a48c16b6f0625fe23e86c01c8969b9267
             <div class="form-group">
                 <RadzenLabel class="form-label" Text="Người thực hiện" />
                 <RadzenDropDown class="radzen-dropdown"
@@ -63,10 +76,18 @@
                                 FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
                                 FilterOperator="StringFilterOperator.Contains"
                                 AllowFiltering="true"
+<<<<<<< HEAD
                                 Data="@listStudent"
                                 TextProperty="Name"
                                 ValueProperty="Id"
                                 @bind-Value="@editModel.StudentId" />
+=======
+                                Data="@listSpecialized"
+                                TextProperty="Name"
+                                ValueProperty="Id"
+                                Placeholder="--Tất cả--"
+                                @bind-Value="@editModel.SpecializedId" />
+>>>>>>> 8a34cc9a48c16b6f0625fe23e86c01c8969b9267
             </div>
         </div>
 
